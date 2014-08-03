@@ -1,0 +1,9 @@
+- Conocer las versiones de los Sistemas Operativos de TODOS los equipos.
+- Conocer la versión de Java instalada o bajo la cuál corre la app de FEDECREDITO.
+- Conocer las especificaciones técnicas de Hardware de todos los equipos.
+- Conocer la información que debe brindar el sistema.
+- Conocer los reportes que debe generar el sistema.
+- Conocer lo que NO será capaz de hacer el sistema.
+- Determinar la tecnología a aplicar (será web).
+- Detallar por qué se usará esa tecnología.
+- 
