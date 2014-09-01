@@ -6,4 +6,4 @@
 - Conocer lo que NO será capaz de hacer el sistema.
 - Determinar la tecnología a aplicar (será web).
 - Detallar por qué se usará esa tecnología.
-- 
+- Hola
