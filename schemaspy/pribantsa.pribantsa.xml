@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="pribantsa" schema="pribantsa" type="PostgreSQL - 9.1.14">
+   <tables>
+      <table name="bono" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;bono_idBono_seq&quot;'::regclass)" digits="0" id="0" name="idBono" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="fecha" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="2" name="idTipoBono" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_bono_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idBono" sequenceNumberInPK="1"/>
+         <index name="pk_bono" unique="true">
+            <column ascending="true" name="idBono"/>
+         </index>
+      </table>
+      <table name="capacitacion" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;capacitacion_idCapacitacion_seq&quot;'::regclass)" digits="0" id="0" name="idCapacitacion" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="nombre" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="3" name="lugar" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="fecha_inicio" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="5" name="fecha_fin" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="6" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_capacitacion_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idCapacitacion" sequenceNumberInPK="1"/>
+         <index name="pk_capacitacion" unique="true">
+            <column ascending="true" name="idCapacitacion"/>
+         </index>
+      </table>
+      <table name="contrato" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;contrato_idContrato_seq&quot;'::regclass)" digits="0" id="0" name="idContrato" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_contrato_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="idTipoContrato" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idTipoContrato" foreignKey="fk_tipoContrato_contrato" implied="false" onDeleteCascade="true" table="tipo_contrato"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="fecha_inicio" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="4" name="fecha_fin" nullable="false" remarks="" size="13" type="date"/>
+         <primaryKey column="idContrato" sequenceNumberInPK="1"/>
+         <index name="pk_contrato" unique="true">
+            <column ascending="true" name="idContrato"/>
+         </index>
+      </table>
+      <table name="correo" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;correo_idCorreo_seq&quot;'::regclass)" digits="0" id="0" name="idCorreo" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="correo" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_correo_empleado" implied="false" onDeleteCascade="false" table="empleado"/>
+         </column>
+         <primaryKey column="idCorreo" sequenceNumberInPK="1"/>
+         <index name="pk_correo" unique="true">
+            <column ascending="true" name="idCorreo"/>
+         </index>
+      </table>
+      <table name="criterio" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;criterio_idCriterio_seq&quot;'::regclass)" digits="0" id="0" name="idCriterio" nullable="false" remarks="" size="10" type="serial">
+            <child column="idCriterio" foreignKey="fk_evaluacion_criterio" implied="false" onDeleteCascade="true" table="evaluacion"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="peso" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="idPuesto" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idPuestoTrabajo" foreignKey="fk_criterio_puesto" implied="false" onDeleteCascade="true" table="puesto_trabajo"/>
+         </column>
+         <primaryKey column="idCriterio" sequenceNumberInPK="1"/>
+         <index name="pk_criterio" unique="true">
+            <column ascending="true" name="idCriterio"/>
+         </index>
+      </table>
+      <table name="departamento" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;departamento_idDepartamento_seq&quot;'::regclass)" digits="0" id="0" name="idDepartamento" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="nombre" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="3" name="idEmpleado_jefe" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_departamento_empleado" implied="false" onDeleteCascade="false" table="empleado"/>
+         </column>
+         <primaryKey column="idDepartamento" sequenceNumberInPK="1"/>
+         <index name="pk_departamento" unique="true">
+            <column ascending="true" name="idDepartamento"/>
+         </index>
+      </table>
+      <table name="descuento" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;descuento_idDescuento_seq&quot;'::regclass)" digits="0" id="0" name="idDescuento" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="fecha" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="2" name="idTipoDescuento" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idTipoDescuento" foreignKey="fk_descuento_tipo" implied="false" onDeleteCascade="true" table="tipo_descuento"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_descuento_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idDescuento" sequenceNumberInPK="1"/>
+         <index name="pk_descuento" unique="true">
+            <column ascending="true" name="idDescuento"/>
+         </index>
+      </table>
+      <table name="educacion" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;educacion_idEducacion_seq&quot;'::regclass)" digits="0" id="0" name="idEducacion" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="titulo" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="fecha_inicio" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="3" name="fecha_fin" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="4" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_educacion_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idEducacion" sequenceNumberInPK="1"/>
+         <index name="pk_educacion" unique="true">
+            <column ascending="true" name="idEducacion"/>
+         </index>
+      </table>
+      <table name="empleado" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;empleado_idEmpleado_seq&quot;'::regclass)" digits="0" id="0" name="idEmpleado" nullable="false" remarks="" size="10" type="serial">
+            <child column="idEmpleado" foreignKey="fk_bono_empleado" implied="false" onDeleteCascade="true" table="bono"/>
+            <child column="idEmpleado" foreignKey="fk_capacitacion_empleado" implied="false" onDeleteCascade="true" table="capacitacion"/>
+            <child column="idEmpleado" foreignKey="fk_contrato_empleado" implied="false" onDeleteCascade="true" table="contrato"/>
+            <child column="idEmpleado" foreignKey="fk_correo_empleado" implied="false" onDeleteCascade="false" table="correo"/>
+            <child column="idEmpleado_jefe" foreignKey="fk_departamento_empleado" implied="false" onDeleteCascade="false" table="departamento"/>
+            <child column="idEmpleado" foreignKey="fk_descuento_empleado" implied="false" onDeleteCascade="true" table="descuento"/>
+            <child column="idEmpleado" foreignKey="fk_educacion_empleado" implied="false" onDeleteCascade="true" table="educacion"/>
+            <child column="idEmpleado" foreignKey="fk_evaluacion_empleado" implied="false" onDeleteCascade="true" table="evaluacion"/>
+            <child column="idEmpleado" foreignKey="fk_permiso_empleado" implied="false" onDeleteCascade="true" table="permiso"/>
+            <child column="idEmpleado" foreignKey="fk_planilla_empleado" implied="false" onDeleteCascade="true" table="planilla"/>
+            <child column="idEmpleado" foreignKey="fk_historico_empleado" implied="false" onDeleteCascade="true" table="puesto_historico"/>
+            <child column="idEmpleado" foreignKey="fk_reconocimiento_empleado" implied="false" onDeleteCascade="true" table="reconocimiento"/>
+            <child column="idEmpleado" foreignKey="fk_sancion_empleado" implied="false" onDeleteCascade="true" table="sancion"/>
+            <child column="idEmpleado" foreignKey="fk_telefono_empleado" implied="false" onDeleteCascade="true" table="telefono"/>
+            <child column="idEmpleado" foreignKey="fk_transaccion_empleado" implied="false" onDeleteCascade="true" table="transaccion"/>
+            <child column="idEmpleado" foreignKey="fk_usuario_empleado" implied="false" onDeleteCascade="true" table="usuario"/>
+            <child column="idEmpleado" foreignKey="fk_vacacion_empleado" implied="false" onDeleteCascade="true" table="vacacion"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="dui" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="isss" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="3" name="afp" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="sexo" nullable="true" remarks="" size="1" type="char"/>
+         <column autoUpdated="false" digits="0" id="5" name="id_departamento" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="nit" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="7" name="nombre" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="8" name="apellido" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="9" name="fecha_nacimiento" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="10" name="cuenta" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="17" id="11" name="salario" nullable="false" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="0" id="12" name="id_PuestoTrabajo" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idPuestoTrabajo" foreignKey="fk_empleado_puesto" implied="false" onDeleteCascade="false" table="puesto_trabajo"/>
+         </column>
+         <primaryKey column="idEmpleado" sequenceNumberInPK="1"/>
+         <index name="pk_empleado" unique="true">
+            <column ascending="true" name="idEmpleado"/>
+         </index>
+      </table>
+      <table name="evaluacion" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;evaluacion_idEvaluacion_seq&quot;'::regclass)" digits="0" id="0" name="idEvaluacion" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="17" id="1" name="puntaje" nullable="false" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="0" id="2" name="fecha" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="3" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_evaluacion_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="4" name="idCriterio" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idCriterio" foreignKey="fk_evaluacion_criterio" implied="false" onDeleteCascade="true" table="criterio"/>
+         </column>
+         <primaryKey column="idEvaluacion" sequenceNumberInPK="1"/>
+         <index name="pk_evaluacion" unique="true">
+            <column ascending="true" name="idEvaluacion"/>
+         </index>
+      </table>
+      <table name="objetivo" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;objetivo_idObjetivo_seq&quot;'::regclass)" digits="0" id="0" name="idObjetivo" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="alcance" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="3" name="idPuestoTrabajo" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idPuestoTrabajo" foreignKey="fk_objetivo_puesto" implied="false" onDeleteCascade="true" table="puesto_trabajo"/>
+         </column>
+         <primaryKey column="idObjetivo" sequenceNumberInPK="1"/>
+         <index name="pk_objetivo" unique="true">
+            <column ascending="true" name="idObjetivo"/>
+         </index>
+      </table>
+      <table name="permiso" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;permiso_idPermiso_seq&quot;'::regclass)" digits="0" id="0" name="idPermiso" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="remunerado" nullable="false" remarks="Si el permiso es remunerado se marcará este campo como &quot;verdadero&quot;, en caso no sea remunerado se marcará como &quot;falso&quot;." size="1" type="bool"/>
+         <column autoUpdated="false" digits="6" id="2" name="inicio" nullable="false" remarks="" size="29" type="timestamp"/>
+         <column autoUpdated="false" digits="6" id="3" name="fin" nullable="false" remarks="" size="29" type="timestamp"/>
+         <column autoUpdated="false" digits="0" id="4" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_permiso_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="5" name="idTipoPermiso" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idTipoPermiso" foreignKey="fk_permiso_tipoP" implied="false" onDeleteCascade="true" table="tipo_permiso"/>
+         </column>
+         <primaryKey column="idPermiso" sequenceNumberInPK="1"/>
+         <index name="pk_permiso" unique="true">
+            <column ascending="true" name="idPermiso"/>
+         </index>
+      </table>
+      <table name="planilla" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;planilla_idPlanilla_seq&quot;'::regclass)" digits="0" id="0" name="idPlanilla" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="fecha_inicio" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="2" name="fecha_fin" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="3" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_planilla_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idPlanilla" sequenceNumberInPK="1"/>
+         <index name="pk_planilla" unique="true">
+            <column ascending="true" name="idPlanilla"/>
+         </index>
+      </table>
+      <table name="puesto_historico" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;puesto_historico_idHistoricoPuesto_seq&quot;'::regclass)" digits="0" id="0" name="idHistoricoPuesto" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="idPuesto" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idPuestoTrabajo" foreignKey="fk_historico_puesto" implied="false" onDeleteCascade="true" table="puesto_trabajo"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_historico_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="fecha_inicio" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="4" name="fecha_fin" nullable="true" remarks="" size="13" type="date"/>
+         <primaryKey column="idHistoricoPuesto" sequenceNumberInPK="1"/>
+         <index name="pk_historico_puesto" unique="true">
+            <column ascending="true" name="idHistoricoPuesto"/>
+         </index>
+      </table>
+      <table name="puesto_trabajo" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;puesto_trabajo_idPuestoTrabajo_seq&quot;'::regclass)" digits="0" id="0" name="idPuestoTrabajo" nullable="false" remarks="" size="10" type="serial">
+            <child column="idPuesto" foreignKey="fk_criterio_puesto" implied="false" onDeleteCascade="true" table="criterio"/>
+            <child column="id_PuestoTrabajo" foreignKey="fk_empleado_puesto" implied="false" onDeleteCascade="false" table="empleado"/>
+            <child column="idPuestoTrabajo" foreignKey="fk_objetivo_puesto" implied="false" onDeleteCascade="true" table="objetivo"/>
+            <child column="idPuesto" foreignKey="fk_historico_puesto" implied="false" onDeleteCascade="true" table="puesto_historico"/>
+            <child column="idPuesto" foreignKey="fk_tipo_bono_puesto" implied="false" onDeleteCascade="true" table="tipo_bono"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="nombre" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="17" id="3" name="salario_max" nullable="false" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="17" id="4" name="salario_min" nullable="false" remarks="" size="17" type="float8"/>
+         <primaryKey column="idPuestoTrabajo" sequenceNumberInPK="1"/>
+         <index name="pk_puesto_trabajo" unique="true">
+            <column ascending="true" name="idPuestoTrabajo"/>
+         </index>
+      </table>
+      <table name="reconocimiento" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;reconocimiento_idReconocimiento_seq&quot;'::regclass)" digits="0" id="0" name="idReconocimiento" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_reconocimiento_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idReconocimiento" sequenceNumberInPK="1"/>
+         <index name="pk_reconocimiento" unique="true">
+            <column ascending="true" name="idReconocimiento"/>
+         </index>
+      </table>
+      <table name="sancion" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;sancion_idSancion_seq&quot;'::regclass)" digits="0" id="0" name="idSancion" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="gravedad" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="3" name="fecha" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="4" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_sancion_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idSancion" sequenceNumberInPK="1"/>
+         <index name="pk_sancion" unique="true">
+            <column ascending="true" name="idSancion"/>
+         </index>
+      </table>
+      <table name="telefono" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;telefono_idTelefono_seq&quot;'::regclass)" digits="0" id="0" name="idTelefono" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="telefono" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_telefono_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idTelefono" sequenceNumberInPK="1"/>
+         <index name="pk_telefono" unique="true">
+            <column ascending="true" name="idTelefono"/>
+         </index>
+      </table>
+      <table name="tipo_bono" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;tipo_bono_idTipoBono_seq&quot;'::regclass)" digits="0" id="0" name="idTipoBono" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="idPuesto" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idPuestoTrabajo" foreignKey="fk_tipo_bono_puesto" implied="false" onDeleteCascade="true" table="puesto_trabajo"/>
+         </column>
+         <column autoUpdated="false" digits="17" id="2" name="porcentaje" nullable="false" remarks="" size="17" type="float8"/>
+         <primaryKey column="idTipoBono" sequenceNumberInPK="1"/>
+         <index name="pk_tipo_bono" unique="true">
+            <column ascending="true" name="idTipoBono"/>
+         </index>
+      </table>
+      <table name="tipo_contrato" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;tipo_contrato_idTipoContrato_seq&quot;'::regclass)" digits="0" id="0" name="idTipoContrato" nullable="false" remarks="" size="10" type="serial">
+            <child column="idTipoContrato" foreignKey="fk_tipoContrato_contrato" implied="false" onDeleteCascade="true" table="contrato"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <primaryKey column="idTipoContrato" sequenceNumberInPK="1"/>
+         <index name="pk_tipo_contrato" unique="true">
+            <column ascending="true" name="idTipoContrato"/>
+         </index>
+      </table>
+      <table name="tipo_descuento" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;tipo_descuento_idTipoDescuento_seq&quot;'::regclass)" digits="0" id="0" name="idTipoDescuento" nullable="false" remarks="" size="10" type="serial">
+            <child column="idTipoDescuento" foreignKey="fk_descuento_tipo" implied="false" onDeleteCascade="true" table="descuento"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="17" id="2" name="porcentaje" nullable="false" remarks="" size="17" type="float8"/>
+         <primaryKey column="idTipoDescuento" sequenceNumberInPK="1"/>
+         <index name="tipo_descuento_pkey" unique="true">
+            <column ascending="true" name="idTipoDescuento"/>
+         </index>
+      </table>
+      <table name="tipo_permiso" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;tipo_permiso_idTipoPermiso_seq&quot;'::regclass)" digits="0" id="0" name="idTipoPermiso" nullable="false" remarks="" size="10" type="serial">
+            <child column="idTipoPermiso" foreignKey="fk_permiso_tipoP" implied="false" onDeleteCascade="true" table="permiso"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="descripcion" nullable="false" remarks="" size="2147483647" type="text"/>
+         <primaryKey column="idTipoPermiso" sequenceNumberInPK="1"/>
+         <index name="pk_tipo_permiso" unique="true">
+            <column ascending="true" name="idTipoPermiso"/>
+         </index>
+      </table>
+      <table name="transaccion" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;transaccion_idTransaccion_seq&quot;'::regclass)" digits="0" id="0" name="idTransaccion" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_transaccion_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="credito_debito" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="17" id="3" name="monto" nullable="false" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="6" id="4" name="fecha" nullable="false" remarks="" size="29" type="timestamp"/>
+         <primaryKey column="idTransaccion" sequenceNumberInPK="1"/>
+         <index name="pk_transaccion" unique="true">
+            <column ascending="true" name="idTransaccion"/>
+         </index>
+      </table>
+      <table name="usuario" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;usuario_idUsuario_seq&quot;'::regclass)" digits="0" id="0" name="idUsuario" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_usuario_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="usuario" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="3" name="contrasena" nullable="false" remarks="" size="2147483647" type="text"/>
+         <primaryKey column="idUsuario" sequenceNumberInPK="1"/>
+         <index name="pk_usuario" unique="true">
+            <column ascending="true" name="idUsuario"/>
+         </index>
+      </table>
+      <table name="vacacion" numRows="0" remarks="" schema="pribantsa" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pribantsa.&quot;vacacion_idVacacion_seq&quot;'::regclass)" digits="0" id="0" name="idVacacion" nullable="false" remarks="" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="fecha_inicio" nullable="false" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="2" name="fecha_fin" nullable="true" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="3" name="idEmpleado" nullable="false" remarks="" size="10" type="int4">
+            <parent column="idEmpleado" foreignKey="fk_vacacion_empleado" implied="false" onDeleteCascade="true" table="empleado"/>
+         </column>
+         <primaryKey column="idVacacion" sequenceNumberInPK="1"/>
+         <index name="pk_vacacion" unique="true">
+            <column ascending="true" name="idVacacion"/>
+         </index>
+      </table>
+   </tables>
+</database>
