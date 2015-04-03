@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/byron/NetBeansProjects/TesisInterfaz/src/logicaNegocio/exceptionClass.java</file>
-            <file>file:/home/byron/NetBeansProjects/TesisInterfaz/src/encapsulacion/empleado.java</file>
-            <file>file:/home/byron/NetBeansProjects/TesisInterfaz/src/capaPresentacion/TesisInterfaz.java</file>
-            <file>file:/home/byron/NetBeansProjects/TesisInterfaz/src/capaPresentacion/crearEmpleado.java</file>
-            <file>file:/home/byron/NetBeansProjects/TesisInterfaz/src/logicaNegocio/logicaEmpleados.java</file>
+            <file>file:/home/byron/finalTesis/Tesis/TesisInterfaz/src/capaPresentacion/Principal.java</file>
+            <file>file:/home/byron/finalTesis/Tesis/TesisInterfaz/src/capaPresentacion/crearEmpleado.java</file>
+            <file>file:/home/byron/finalTesis/Tesis/TesisInterfaz/src/encapsulacion/empleado.java</file>
+            <file>file:/home/byron/finalTesis/Tesis/TesisInterfaz/src/logicaNegocio/logicaEmpleados.java</file>
         </group>
     </open-files>
 </project-private>

@@ -7,7 +7,6 @@
 package encapsulacion;
 
 import java.util.Date;
-import logicaNegocio.exceptionClass;
 
 /**
  *
@@ -19,8 +18,8 @@ public class empleado {
     private String apellido;
     private String dui;
     private String nit;
-    private int afp;
-    private int isss;
+    private String afp;
+    private String isss;
     private double numCuenta;
     private Date fechanaciemiento;
     private int edad;
@@ -29,19 +28,19 @@ public class empleado {
     //estado civil
     
 
-    public int getAfp() {
+    public String getAfp() {
         return afp;
     }
 
-    public void setAfp(int afp) {
+    public void setAfp(String afp) {
         this.afp = afp;
     }
 
-    public int getIsss() {
+    public String getIsss() {
         return isss;
     }
 
-    public void setIsss(int isss) {
+    public void setIsss(String isss) {
         this.isss = isss;
     }
    

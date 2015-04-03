@@ -83,7 +83,7 @@ public class crearEmpleado extends javax.swing.JFrame {
         jTextField17 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        agregarEstudios = new javax.swing.JButton();
         jComboBox3 = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -190,14 +190,16 @@ public class crearEmpleado extends javax.swing.JFrame {
                                     .addComponent(jLabel9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(afp, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(afp, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel15))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(isss, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel11))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLabel15)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(duiEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -312,7 +314,12 @@ public class crearEmpleado extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Agregar");
+        agregarEstudios.setText("Agregar");
+        agregarEstudios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarEstudiosActionPerformed(evt);
+            }
+        });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -335,7 +342,7 @@ public class crearEmpleado extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1))
+                                    .addComponent(agregarEstudios))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel17)
@@ -376,7 +383,7 @@ public class crearEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(agregarEstudios))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -698,23 +705,36 @@ public class crearEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
         empleado emp=new empleado();
         logicaEmpleados logicaEmp=new logicaEmpleados();
-      try{
+     
+        try{
+          
         emp.setNombre(nombEmpleado.getText());
         emp.setApellido(apellEmpleado.getText());
-     //  emp.setEdad(Integer.parseInt(edadEmpleado.getText()));
+        emp.setEdad(Integer.parseInt(edadEmpleado.getText()));
         emp.setDui(duiEmpleado.getText());
-       // emp.setAfp(Integer.parseInt(afp.getText()));
-        emp.setIsss(Integer.parseInt(isss.getText()));
-       // emp.setDireccion(domicilio.getText());
+        emp.setAfp(afp.getText());
+        emp.setIsss(isss.getText());
+        emp.setDireccion(domicilio.getText());
         emp.setNit(nitEmpleado.getText());
         logicaEmp.validar(emp);
         logicaEmp.agregarEmpleado(emp);        
-        }catch(NumberFormatException a){
-          JOptionPane.showMessageDialog(null,"Error de Datos","",JOptionPane.ERROR_MESSAGE);
-        } catch (exceptionClass ex) {
-            JOptionPane.showMessageDialog(null,ex.getError(),"!Error¡",JOptionPane.ERROR_MESSAGE);
-        }         
+       
+            }catch(NumberFormatException a){
+                
+                JOptionPane.showMessageDialog(null,"Datos Incompletos","!Error¡",JOptionPane.ERROR_MESSAGE);
+        
+            } catch (exceptionClass ex) {
+            
+                JOptionPane.showMessageDialog(null,ex.getError(),"!Error¡",JOptionPane.ERROR_MESSAGE);
+        } 
+      
     }//GEN-LAST:event_guardarEmpleadoActionPerformed
+
+    private void agregarEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEstudiosActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_agregarEstudiosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -753,6 +773,7 @@ public class crearEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField afp;
+    private javax.swing.JButton agregarEstudios;
     private javax.swing.JTextField apellEmpleado;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -763,7 +784,6 @@ public class crearEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField edadEmpleado;
     private javax.swing.JButton guardarEmpleado;
     private javax.swing.JTextField isss;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
