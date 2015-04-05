@@ -222,8 +222,7 @@ ALTER SEQUENCE "criterio_idCriterio_seq" OWNED BY criterio."idCriterio";
 CREATE TABLE departamento (
     "idDepartamento" integer NOT NULL,
     nombre text NOT NULL,
-    descripcion text NOT NULL,
-    "idEmpleado_jefe" integer NOT NULL
+    descripcion text NOT NULL
 );
 
 
@@ -294,7 +293,8 @@ CREATE TABLE educacion (
     titulo text NOT NULL,
     fecha_inicio date NOT NULL,
     fecha_fin date NOT NULL,
-    "idEmpleado" integer NOT NULL
+    "idEmpleado" integer NOT NULL,
+    institucion text
 );
 
 
@@ -488,7 +488,15 @@ CREATE TABLE planilla (
     "idPlanilla" integer NOT NULL,
     fecha_inicio date NOT NULL,
     fecha_fin date NOT NULL,
-    "idEmpleado" integer NOT NULL
+    "idEmpleado" integer NOT NULL,
+    dias_trabajados double precision NOT NULL,
+    horas double precision NOT NULL,
+    salario_devengado double precision NOT NULL,
+    extras_diurnas double precision NOT NULL,
+    extras_nocturnas double precision NOT NULL,
+    feriado double precision NOT NULL,
+    total_descuentos double precision NOT NULL,
+    liquido_pagar double precision NOT NULL
 );
 
 
@@ -1344,14 +1352,6 @@ ALTER TABLE ONLY correo
 
 ALTER TABLE ONLY criterio
     ADD CONSTRAINT fk_criterio_puesto FOREIGN KEY ("idPuesto") REFERENCES puesto_trabajo("idPuestoTrabajo") ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: fk_departamento_empleado; Type: FK CONSTRAINT; Schema: pribantsa; Owner: postgres
---
-
-ALTER TABLE ONLY departamento
-    ADD CONSTRAINT fk_departamento_empleado FOREIGN KEY ("idEmpleado_jefe") REFERENCES empleado("idEmpleado");
 
 
 --
