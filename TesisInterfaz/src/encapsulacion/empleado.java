@@ -21,7 +21,6 @@ public class empleado {
     private String afp;
     private String isss;
     private double numCuenta;
-    private Date fechanaciemiento;
     private int edad;
     private String direccion;
     //genero
@@ -50,14 +49,6 @@ public class empleado {
 
     public void setNumCuenta(double numCuenta) {
         this.numCuenta = numCuenta;
-    }
-
-    public Date getFechanaciemiento() {
-        return fechanaciemiento;
-    }
-
-    public void setFechanaciemiento(Date fechanaciemiento) {
-        this.fechanaciemiento = fechanaciemiento;
     }
 
     public int getEdad() {
