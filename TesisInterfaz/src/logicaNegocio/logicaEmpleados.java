@@ -58,6 +58,7 @@ public class logicaEmpleados {
             throw new exceptionClass("Datos Incorrectos","Campo: Direccion");
          }
      
+        
      
      
     }

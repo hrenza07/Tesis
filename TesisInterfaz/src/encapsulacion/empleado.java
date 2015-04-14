@@ -6,6 +6,7 @@
 
 package encapsulacion;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -23,8 +24,71 @@ public class empleado {
     private double numCuenta;
     private int edad;
     private String direccion;
-    //genero
-    //estado civil
+    ArrayList <estudios> estudios=new ArrayList<>();
+    ArrayList <experienciaLaboral> exp=new ArrayList<>();
+    private String Genero;
+    private String estCivil;
+    private String cargo;
+    private String departamento;
+    private double salario;
+    
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+    
+
+    public ArrayList<experienciaLaboral> getExp() {
+        return exp;
+    }
+
+    public void setExp(ArrayList<experienciaLaboral> exp) {
+        this.exp = exp;
+    }
+    
+    public ArrayList<estudios> getEstudios() {
+        return estudios;
+    }
+
+    public void setEstudios(ArrayList<estudios> estudios) {
+        this.estudios = estudios;
+    }
+
+    public String getGenero() {
+        return Genero;
+    }
+
+    public void setGenero(String Genero) {
+        this.Genero = Genero;
+    }
+
+    public String getEstCivil() {
+        return estCivil;
+    }
+
+    public void setEstCivil(String estCivil) {
+        this.estCivil = estCivil;
+    }
     
 
     public String getAfp() {
