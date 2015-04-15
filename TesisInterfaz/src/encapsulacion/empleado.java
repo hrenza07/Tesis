@@ -21,16 +21,25 @@ public class empleado {
     private String nit;
     private String afp;
     private String isss;
-    private double numCuenta;
+    private String numCuenta;
     private int edad;
     private String direccion;
-    ArrayList <estudios> estudios=new ArrayList<>();
-    ArrayList <experienciaLaboral> exp=new ArrayList<>();
+    private ArrayList <estudios> estudios=new ArrayList<>();
+    private ArrayList <experienciaLaboral> exp=new ArrayList<>();
     private String Genero;
     private String estCivil;
     private String cargo;
     private String departamento;
     private double salario;
+    
+    
+    public String getNumCuenta() {
+        return numCuenta;
+    }
+
+    public void setNumCuenta(String numCuenta) {
+        this.numCuenta = numCuenta;
+    }
     
 
     public String getCargo() {
@@ -105,14 +114,6 @@ public class empleado {
 
     public void setIsss(String isss) {
         this.isss = isss;
-    }
-   
-    public double getNumCuenta() {
-        return numCuenta;
-    }
-
-    public void setNumCuenta(double numCuenta) {
-        this.numCuenta = numCuenta;
     }
 
     public int getEdad() {

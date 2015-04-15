@@ -19,7 +19,7 @@ public class logicaEmpleados {
         
         JOptionPane.showMessageDialog(null,"Guardado con Exito");
        
-        }
+        }   
            
    
     
