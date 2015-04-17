@@ -9,6 +9,8 @@ package capaPresentacion;
 import encapsulacion.departamento;
 import encapsulacion.objetivos;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import logicaNegocio.exceptionClass;
 import logicaNegocio.logicaDepartamento;
 
 /**
@@ -16,13 +18,14 @@ import logicaNegocio.logicaDepartamento;
  * @author byron
  */
 public class crearDepart extends javax.swing.JFrame {
-
+    DefaultTableModel modOb;
     /**
      * Creates new form crearDepart
      */
     public crearDepart() {
         super("Crear Nuevo Departamento");
         initComponents();
+        agregarObjetivos.setEnabled(false);
     }
 
     /**
@@ -41,12 +44,12 @@ public class crearDepart extends javax.swing.JFrame {
         comboJefeDepar = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaObje = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         objetivoDep = new javax.swing.JTextField();
         agregarObjetivos = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox();
+        comboTipoObjetivo = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
@@ -63,7 +66,7 @@ public class crearDepart extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Objetivos"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaObje.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -71,15 +74,26 @@ public class crearDepart extends javax.swing.JFrame {
                 "tipo", "Objetivo"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablaObje);
 
         jLabel1.setText("Tipo de Objetivo");
 
         jLabel4.setText("Objetivo:");
 
-        agregarObjetivos.setText("Agregar");
+        objetivoDep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                objetivoDepKeyReleased(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        agregarObjetivos.setText("Agregar");
+        agregarObjetivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarObjetivosActionPerformed(evt);
+            }
+        });
+
+        comboTipoObjetivo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primario", "Secundario" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -94,7 +108,7 @@ public class crearDepart extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboTipoObjetivo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(agregarObjetivos))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -111,7 +125,7 @@ public class crearDepart extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(agregarObjetivos)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboTipoObjetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -238,8 +252,42 @@ public class crearDepart extends javax.swing.JFrame {
         objetivos obj=new objetivos();
         logicaDepartamento logDep= new logicaDepartamento();
         ArrayList <objetivos> objDep=new ArrayList<>();
+        modOb=(DefaultTableModel)tablaObje.getModel();
         
+        try{
+        
+            dep.setNombre(nomDep.getText());
+            dep.setDescripcion(descripcion.getText());
+            dep.setJefe(comboJefeDepar.getSelectedItem().toString());
+                
+                for(int fila=0;fila<modOb.getRowCount();fila++){
+                     obj.setTipo(modOb.getValueAt(fila,0).toString());
+                     obj.setObjDescripcion(modOb.getValueAt(fila,1).toString());
+                     objDep.add(obj);
+                }
+           dep.setObjDepart(objDep);
+           logDep.validar(dep);
+        
+        }catch(exceptionClass ex){
+                      
+        }
     }//GEN-LAST:event_agregarDepartamentoActionPerformed
+
+    private void agregarObjetivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarObjetivosActionPerformed
+        // TODO add your handling code here:
+        modOb=(DefaultTableModel)tablaObje.getModel();
+        modOb.addRow(new Object[]{comboTipoObjetivo.getSelectedItem().toString(),objetivoDep.getText()});
+        objetivoDep.setText("");
+    }//GEN-LAST:event_agregarObjetivosActionPerformed
+
+    private void objetivoDepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_objetivoDepKeyReleased
+        // TODO add your handling code here:
+        if(objetivoDep.getText().length()!=0){
+                agregarObjetivos.setEnabled(true);
+        }else{
+            agregarObjetivos.setEnabled(false);
+        }
+    }//GEN-LAST:event_objetivoDepKeyReleased
 
     /**
      * @param args the command line arguments
@@ -280,9 +328,9 @@ public class crearDepart extends javax.swing.JFrame {
     private javax.swing.JButton agregarDepartamento;
     private javax.swing.JButton agregarObjetivos;
     private javax.swing.JComboBox comboJefeDepar;
+    private javax.swing.JComboBox comboTipoObjetivo;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -292,8 +340,8 @@ public class crearDepart extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField nomDep;
     private javax.swing.JTextField objetivoDep;
+    private javax.swing.JTable tablaObje;
     // End of variables declaration//GEN-END:variables
 }

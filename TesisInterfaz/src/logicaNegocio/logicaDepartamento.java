@@ -14,18 +14,24 @@ import javax.swing.JOptionPane;
 public class logicaDepartamento {
     
     
-    public void agregarEmpleado(departamento emp) {
+    public void agregarEmpleado(departamento dep) {
         
         JOptionPane.showMessageDialog(null,"Guardado con Exito");
        
         }
            
-    public void validar(departamento emp) throws exceptionClass {
+    public void validar(departamento dep) throws exceptionClass {
 
-         if((emp.getNombre().length()<=0) || (!emp.getNombre().matches("^[A-Za-z ]*$"))){ //Validando Nombre 
+         if((dep.getNombre().length()<=0) || (dep.getNombre().matches("^[A-Za-z ]*$"))){ //Validando Nombre 
             throw new exceptionClass("Datos Incorrectos","Campo: Nombre ");
          }
     
+         if((dep.getDescripcion().length()<=0)){ //Validando Descripcion 
+            throw new exceptionClass("Datos Incorrectos","Campo: Nombre ");
+         }
+         
+         
+         
     }
 
 }
