@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">0000</property>
+    <mapping resource="com/pribantsa/demo/Permiso.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Transaccion.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Departamento.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Descuento.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/TipoBono.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Reconocimiento.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Capacitacion.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Correo.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/PuestoHistorico.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Empleado.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Sancion.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Objetivo.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/PuestoTrabajo.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Planilla.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/TipoContrato.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Bono.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Evaluacion.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Educacion.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Vacacion.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Usuario.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Criterio.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Telefono.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/TipoPermiso.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/TipoDescuento.hbm.xml"/>
+    <mapping resource="com/pribantsa/demo/Contrato.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

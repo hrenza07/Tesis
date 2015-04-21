@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-10-2015 12:03:01 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.pribantsa.demo.Transaccion" table="transaccion" schema="pribantsa">
+        <id name="idTransaccion" type="int">
+            <column name="id_transaccion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="empleado" class="com.pribantsa.demo.Empleado" fetch="select">
+            <column name="idEmpleado" not-null="true" />
+        </many-to-one>
+        <property name="creditoDebito" type="boolean">
+            <column name="credito_debito" not-null="true" />
+        </property>
+        <property name="monto" type="double">
+            <column name="monto" precision="17" scale="17" not-null="true" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="29" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

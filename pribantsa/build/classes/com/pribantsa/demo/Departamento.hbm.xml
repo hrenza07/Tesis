@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-10-2015 12:03:01 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.pribantsa.demo.Departamento" table="departamento" schema="pribantsa">
+        <id name="idDepartamento" type="int">
+            <column name="id_departamento" />
+            <generator class="sequence">
+                <param name="sequence">id_departamento_seq</param>
+            </generator>
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

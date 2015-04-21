@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="postgres" match-schema="pribantsa"/>
+  <table-filter match-name="tipo_permiso"/>
+  <table-filter match-name="puesto_trabajo"/>
+  <table-filter match-name="tipo_descuento"/>
+  <table-filter match-name="criterio"/>
+  <table-filter match-name="descuento"/>
+  <table-filter match-name="departamento"/>
+  <table-filter match-name="evaluacion"/>
+  <table-filter match-name="correo"/>
+  <table-filter match-name="objetivo"/>
+  <table-filter match-name="permiso"/>
+  <table-filter match-name="sancion"/>
+  <table-filter match-name="telefono"/>
+  <table-filter match-name="transaccion"/>
+  <table-filter match-name="contrato"/>
+  <table-filter match-name="empleado"/>
+  <table-filter match-name="vacacion"/>
+  <table-filter match-name="tipo_contrato"/>
+  <table-filter match-name="capacitacion"/>
+  <table-filter match-name="puesto_historico"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="planilla"/>
+  <table-filter match-name="educacion"/>
+  <table-filter match-name="reconocimiento"/>
+  <table-filter match-name="tipo_bono"/>
+  <table-filter match-name="bono"/>
+</hibernate-reverse-engineering>

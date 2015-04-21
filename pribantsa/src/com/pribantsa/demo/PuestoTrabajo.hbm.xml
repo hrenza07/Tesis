@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-10-2015 12:03:01 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.pribantsa.demo.PuestoTrabajo" table="puesto_trabajo" schema="pribantsa">
+        <id name="idPuestoTrabajo" type="int">
+            <column name="id_puesto_trabajo" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" not-null="true" />
+        </property>
+        <property name="salarioMax" type="double">
+            <column name="salario_max" precision="17" scale="17" not-null="true" />
+        </property>
+        <property name="salarioMin" type="double">
+            <column name="salario_min" precision="17" scale="17" not-null="true" />
+        </property>
+        <set name="objetivos" table="objetivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPuestoTrabajo" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.demo.Objetivo" />
+        </set>
+        <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_PuestoTrabajo" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.demo.Empleado" />
+        </set>
+        <set name="criterios" table="criterio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPuesto" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.demo.Criterio" />
+        </set>
+        <set name="tipoBonos" table="tipo_bono" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPuesto" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.demo.TipoBono" />
+        </set>
+        <set name="puestoHistoricos" table="puesto_historico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPuesto" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.demo.PuestoHistorico" />
+        </set>
+    </class>
+</hibernate-mapping>
