@@ -41,12 +41,12 @@ public class logicaEmpleados {
             throw new exceptionClass("Datos Incorrectos","Campo: DUI");
          }
     
-    if((!emp.getAfp().matches("[0-9]*")) || (emp.getAfp().length()!=12) ){ //validando AFP
+    if(emp.getAfp().length()!=12){ //validando AFP
             throw new exceptionClass("Datos Incorrectos","Campo: AFP");
-         }
+        }
     
     
-    if((!emp.getIsss().matches("[0-9]*")) || (emp.getIsss().length()!=8)){ //Validando Isss
+    if((emp.getIsss().length()!=8)){ //Validando Isss
             throw new exceptionClass("Datos Incorrectos","Campo: ISSS");
          }
     
@@ -57,6 +57,7 @@ public class logicaEmpleados {
      if(emp.getDireccion().length()<=0){ //Validando Direccion
             throw new exceptionClass("Datos Incorrectos","Campo: Direccion");
          }
+     
      
         
      

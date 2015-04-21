@@ -17,7 +17,16 @@ public class departamento {
     private String nombre;
     private String jefe;
     private String descripcion;
+    private String tipoObjetivo;
     private ArrayList <objetivos> objDepart=new ArrayList<>();
+    
+    public String getTipoObjetivo() {
+        return tipoObjetivo;
+    }
+
+    public void setTipoObjetivo(String tipoObjetivo) {
+        this.tipoObjetivo = tipoObjetivo;
+    }
 
     public String getNombre() {
         return nombre;

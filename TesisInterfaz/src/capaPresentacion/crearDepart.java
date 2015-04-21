@@ -259,6 +259,7 @@ public class crearDepart extends javax.swing.JFrame {
             dep.setNombre(nomDep.getText());
             dep.setDescripcion(descripcion.getText());
             dep.setJefe(comboJefeDepar.getSelectedItem().toString());
+            dep.setTipoObjetivo(comboTipoObjetivo.getSelectedItem().toString());
                 
                 for(int fila=0;fila<modOb.getRowCount();fila++){
                      obj.setTipo(modOb.getValueAt(fila,0).toString());

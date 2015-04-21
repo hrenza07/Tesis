@@ -27,11 +27,8 @@ public class logicaDepartamento {
          }
     
          if((dep.getDescripcion().length()<=0)){ //Validando Descripcion 
-            throw new exceptionClass("Datos Incorrectos","Campo: Nombre ");
-         }
-         
-         
-         
+            throw new exceptionClass("Datos Incorrectos","Descipcion del Departamento Vacio ");
+         }    
     }
 
 }

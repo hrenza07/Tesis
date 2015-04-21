@@ -35,7 +35,6 @@ public class crearEmpleado extends javax.swing.JFrame {
         super("Agregar Nuevo Empleado");
         initComponents();
         agregarEstudios.setEnabled(false);
-        
     }
    
     
@@ -69,8 +68,6 @@ public class crearEmpleado extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        isss = new javax.swing.JTextField();
-        afp = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -84,6 +81,8 @@ public class crearEmpleado extends javax.swing.JFrame {
         nitEmpleado = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         numCuenta = new javax.swing.JFormattedTextField();
+        afp = new javax.swing.JFormattedTextField();
+        isss = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -169,6 +168,18 @@ public class crearEmpleado extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        try {
+            afp.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("############")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            isss.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,17 +194,12 @@ public class crearEmpleado extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(143, 143, 143)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel11)
-                                        .addGap(27, 27, 27))
-                                    .addComponent(jLabel10))
+                                .addGap(150, 150, 150)
+                                .addComponent(jLabel10)
                                 .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(afp, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(67, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -207,23 +213,28 @@ public class crearEmpleado extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(nombEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(duiEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(apellEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(isss, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel8)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addGap(23, 23, 23)
                                 .addComponent(edadEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(numCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(numCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(apellEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(isss, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(afp, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(duiEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel11)))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -247,14 +258,12 @@ public class crearEmpleado extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(isss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(afp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(afp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -529,7 +538,7 @@ public class crearEmpleado extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(comboDepart, 0, 179, Short.MAX_VALUE)
                             .addComponent(comboCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(salarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(salarioEmpleado)))
                     .addComponent(jLabel31))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
@@ -638,7 +647,7 @@ public class crearEmpleado extends javax.swing.JFrame {
                 es.setNivel(mod.getValueAt(fila,0).toString());
                 es.setTitulo(mod.getValueAt(fila,1).toString());
                 fecha=mod.getValueAt(fila,2).toString();
-                SimpleDateFormat formatoFecha=new SimpleDateFormat("MM-dd-yyyy");
+                SimpleDateFormat formatoFecha=new SimpleDateFormat("MM/dd/yyyy");
                 es.setFecha(formatoFecha.parse(fecha));
                 es.setLugar(mod.getValueAt(fila,3).toString());
                 es.setInstitucion(mod.getValueAt(fila,4).toString());
@@ -685,12 +694,14 @@ public class crearEmpleado extends javax.swing.JFrame {
         tituObtenido.setText("");
         pais.setText("");
         nomInstitucion.setText("");
+        agregarEstudios.setEnabled(false);
       
     }//GEN-LAST:event_agregarEstudiosActionPerformed
 
     private void nomInstitucionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomInstitucionKeyReleased
         // TODO add your handling code here:
-        if((nomInstitucion.getText().length()!=0)&&(tituObtenido.getText().length()!=0)){
+        //if((nomInstitucion.getText().length()!=0)&&(tituObtenido.getText().length()!=0)){
+        if((nomInstitucion.getText().replace(" ","").length()!=0)&&(tituObtenido.getText().replace(" ","").length()!=0)){    
           agregarEstudios.setEnabled(true);
         }else{ 
             agregarEstudios.setEnabled(false);
@@ -699,7 +710,7 @@ public class crearEmpleado extends javax.swing.JFrame {
 
     private void tituObtenidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tituObtenidoKeyReleased
         // TODO add your handling code here:
-        if((nomInstitucion.getText().length()!=0)&&(tituObtenido.getText().length()!=0)){
+         if((nomInstitucion.getText().replace(" ","").length()!=0)&&(tituObtenido.getText().replace(" ","").length()!=0)){              
           agregarEstudios.setEnabled(true);
         }else{ 
             agregarEstudios.setEnabled(false);
@@ -755,7 +766,7 @@ public class crearEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField afp;
+    private javax.swing.JFormattedTextField afp;
     private javax.swing.JButton agregarEstudios;
     private javax.swing.JButton agregarExperiencia;
     private javax.swing.JTextField apellEmpleado;
@@ -779,7 +790,7 @@ public class crearEmpleado extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField duiEmpleado;
     private javax.swing.JTextField edadEmpleado;
     private javax.swing.JButton guardarEmpleado;
-    private javax.swing.JTextField isss;
+    private javax.swing.JFormattedTextField isss;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
