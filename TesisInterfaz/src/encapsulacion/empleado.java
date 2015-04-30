@@ -8,6 +8,7 @@ package encapsulacion;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,7 @@ import java.util.Date;
  */
 public class empleado {
     
+    private int id;
     private String nombre;
     private String apellido;
     private String dui;
@@ -24,14 +26,24 @@ public class empleado {
     private String numCuenta;
     private int edad;
     private String direccion;
-    private ArrayList <estudios> estudios=new ArrayList<>();
-    private ArrayList <experienciaLaboral> exp=new ArrayList<>();
-    private String Genero;
+    private List <estudios> estudios=null;
+    private List <experienciaLaboral> exp=null;
+    private char Genero;
     private String estCivil;
     private String cargo;
     private String departamento;
     private double salario;
-    
+
+    public empleado() {  //contructor por defecto que utiliza Hibernate
+    }                        
+
+    public int getId() {  //Mapeo atravez del id
+        return id;
+    }
+
+    public void setId(int id) { //Mapeo atravez del id
+        this.id = id;
+    }
     
     public String getNumCuenta() {
         return numCuenta;
@@ -67,27 +79,27 @@ public class empleado {
     }
     
 
-    public ArrayList<experienciaLaboral> getExp() {
+    public List<experienciaLaboral> getExp() {
         return exp;
     }
 
-    public void setExp(ArrayList<experienciaLaboral> exp) {
+    public void setExp(List<experienciaLaboral> exp) {
         this.exp = exp;
     }
     
-    public ArrayList<estudios> getEstudios() {
+    public List<estudios> getEstudios() {
         return estudios;
     }
 
-    public void setEstudios(ArrayList<estudios> estudios) {
+    public void setEstudios(List<estudios> estudios) {
         this.estudios = estudios;
     }
 
-    public String getGenero() {
+    public char getGenero() {
         return Genero;
     }
 
-    public void setGenero(String Genero) {
+    public void setGenero(char Genero) {
         this.Genero = Genero;
     }
 

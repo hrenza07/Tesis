@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+     <class name="encapsulacion.empleado" schema="Tesis" table="empleado">
+          <id name="id_direccion" column="id_direccion">
+            <generator class="sequence">
+             <param name="sequence">direccion_id_direccion_seq</param> 
+            </generator>
+          </id>
+     <property name="ciudad" column="ciudad" type="string"/>
+     <property name="calle" column="calle" type="string"/>
+     <property name="codzip" column="codigozip" type="int"/>     
+     
+     <many-to-one name="emp" class="Encapsulacion.empleado">
+        <column name="empleado_id" not-null="true"/>
+     </many-to-one>
+     
+     </class>     
+</hibernate-mapping>

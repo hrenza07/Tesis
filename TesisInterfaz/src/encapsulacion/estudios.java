@@ -14,14 +14,34 @@ import java.util.Date;
  */
 public class estudios {
     
-    
+    private int idestudios;
     private String institucion;
     private String titulo;
     private Date fecha;
     private String lugar;
     private String nivel;
-  
+    private empleado emp;
 
+    public estudios() {
+    }
+
+    public int getIdestudios() {
+        return idestudios;
+    }
+
+    public void setIdestudios(int idestudios) {
+        this.idestudios = idestudios;
+    }
+
+    public empleado getEmp() {
+        return emp;
+    }
+
+    public void setEmp(empleado emp) {
+        this.emp = emp;
+    }
+    
+ 
     public String getInstitucion() {
         return institucion;
     }

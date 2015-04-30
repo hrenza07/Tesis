@@ -6,6 +6,9 @@
 
 package capaPresentacion;
 
+import encapsulacion.estudios;
+import java.util.List;
+
 /**
  *
  * @author byron
@@ -21,6 +24,7 @@ public class TesisInterfaz {
         a.setVisible(true);
         a.pack();
         a.setResizable(false);
+        
     }
     
 }

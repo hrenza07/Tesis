@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logicaNegocio.exceptionClass;
 import logicaNegocio.logicaEmpleados;
+import java.util.List;
 
 /**
  *
@@ -26,7 +27,6 @@ public class crearEmpleado extends javax.swing.JFrame {
     private DefaultTableModel mod;
     private DefaultTableModel modEx; 
 
-    
 
     /**
      * Creates new form crearEmpleado
@@ -142,7 +142,7 @@ public class crearEmpleado extends javax.swing.JFrame {
 
         jLabel11.setText("Genero:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
 
         jLabel15.setText("Edad:");
 
@@ -624,8 +624,8 @@ public class crearEmpleado extends javax.swing.JFrame {
         logicaEmpleados logicaEmp=new logicaEmpleados();
         mod=(DefaultTableModel) tablaEstudios.getModel();
         modEx=(DefaultTableModel) tablaExperiencia.getModel();
-        ArrayList <estudios> empleadoEstudio=new ArrayList<>();
-        ArrayList <experienciaLaboral> experiencia=new ArrayList<>();
+        List<estudios> empleadoEstudio=new ArrayList<>();
+        List<experienciaLaboral> experiencia=new ArrayList<>();
         String fecha;
         
         try{

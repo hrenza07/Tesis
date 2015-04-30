@@ -6,19 +6,20 @@
 
 package logicaNegocio;
 
+import capaDatos.empleadoDAO;
 import encapsulacion.empleado;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author byron
  */
 public class logicaEmpleados {
+     empleadoDAO datos=new empleadoDAO();
      
     public void agregarEmpleado(empleado emp) {
-        
-        JOptionPane.showMessageDialog(null,"Guardado con Exito");
-       
+            
+       System.out.println("valido todo");
+       datos.guardaEmpleado(emp);
         }   
            
    
@@ -46,7 +47,7 @@ public class logicaEmpleados {
         }
     
     
-    if((emp.getIsss().length()!=8)){ //Validando Isss
+    if((emp.getIsss().length()!=9)){ //Validando Isss
             throw new exceptionClass("Datos Incorrectos","Campo: ISSS");
          }
     

@@ -12,9 +12,30 @@ package encapsulacion;
  */
 public class experienciaLaboral {
     
+    private int id;
     private String lugar;
     private String tiempo;
     private String cargo;
+    private empleado emp;
+    
+    public experienciaLaboral() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public empleado getEmp() {
+        return emp;
+    }
+
+    public void setEmp(empleado emp) {
+        this.emp = emp;
+    }
 
     public String getLugar() {
         return lugar;
