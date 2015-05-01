@@ -3,18 +3,18 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-     <class name="encapsulacion.empleado" schema="Tesis" table="empleado">
-          <id name="id_direccion" column="id_direccion">
+     <class name="encapsulacion.experienciaLaboral" schema="pribantsa" table="exp_laboral">
+          <id name="id" column="id_explaboral">
             <generator class="sequence">
-             <param name="sequence">direccion_id_direccion_seq</param> 
+             <param name="sequence">exp_laboral_id_explaboral_seq</param> 
             </generator>
           </id>
-     <property name="ciudad" column="ciudad" type="string"/>
-     <property name="calle" column="calle" type="string"/>
-     <property name="codzip" column="codigozip" type="int"/>     
+     <property name="lugar" column="lugar" type="string"/>
+     <property name="tiempo" column="tiempo" type="int"/>
+     <property name="cargo" column="cargo" type="string"/>     
      
-     <many-to-one name="emp" class="Encapsulacion.empleado">
-        <column name="empleado_id" not-null="true"/>
+     <many-to-one name="emp" class="encapsulacion.empleado">
+        <column name="idEmpleado" not-null="true"/>
      </many-to-one>
      
      </class>     
