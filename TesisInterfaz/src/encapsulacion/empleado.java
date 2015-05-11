@@ -28,7 +28,7 @@ public class empleado {
     private String direccion;
     private List <estudios> estudios=null;
     private List <experienciaLaboral> exp=null;
-    private char Genero;
+    private String Genero;
     private String estCivil;
     private String cargo;
     private String departamento;
@@ -95,11 +95,11 @@ public class empleado {
         this.estudios = estudios;
     }
 
-    public char getGenero() {
+    public String getGenero() {
         return Genero;
     }
 
-    public void setGenero(char Genero) {
+    public void setGenero(String Genero) {
         this.Genero = Genero;
     }
 

@@ -4,14 +4,14 @@
 
 <hibernate-mapping>
      <class name="encapsulacion.empleado" schema="pribantsa" table="empleado">
-          <id name="id" column="idEmpleado">
+          <id name="id" column="empleado_id">
             <generator class="sequence">
-             <param name="sequence">pribantsa."empleado_idEmpleado_seq"</param> 
+             <param name="sequence">pribantsa.empleado_empleado_idseq</param> 
             </generator>
           </id>
      <property name="nombre" column="nombre" type="string"/>
      <property name="apellido" column="apellido" type="string"/>
-     <property name="dui" column="Tdui" type="string"/> 
+     <property name="dui" column="dui" type="string"/> 
      <property name="nit" column="nit" type="string"/>     
      <property name="afp" column="afp" type="string"/>     
      <property name="isss" column="isss" type="string"/>     
@@ -19,8 +19,8 @@
      <property name="edad" column="edad" type="int"/>     
     <!-- <property name="direccion" column="dui" type="int"/>   -->      
      <property name="salario" column="salario" type="double"/>
-     <property name="Genero" column="sexo" type="char"/>
-     <property name="estCivil" column="estadoCivil" type="string"/>
+     <property name="Genero" column="sexo" type="string"/>
+     <property name="estCivil" column="estado_civil" type="string"/>
      
       <list name="estudios" table="educacion" fetch="select" cascade="all">
             <key>

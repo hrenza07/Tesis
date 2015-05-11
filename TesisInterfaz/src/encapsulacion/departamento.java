@@ -7,6 +7,7 @@
 package encapsulacion;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,11 +15,22 @@ import java.util.ArrayList;
  */
 public class departamento {
     
+    private int id;
     private String nombre;
-    private String jefe;
     private String descripcion;
     private String tipoObjetivo;
-    private ArrayList <objetivos> objDepart=new ArrayList<>();
+    private List <objetivos> objDepart=null;
+
+    public departamento() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public String getTipoObjetivo() {
         return tipoObjetivo;
@@ -36,14 +48,6 @@ public class departamento {
         this.nombre = nombre;
     }
 
-    public String getJefe() {
-        return jefe;
-    }
-
-    public void setJefe(String jefe) {
-        this.jefe = jefe;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -52,11 +56,11 @@ public class departamento {
         this.descripcion = descripcion;
     }
 
-    public ArrayList<objetivos> getObjDepart() {
+    public List<objetivos> getObjDepart() {
         return objDepart;
     }
 
-    public void setObjDepart(ArrayList<objetivos> objDepart) {
+    public void setObjDepart(List<objetivos> objDepart) {
         this.objDepart = objDepart;
     }
     

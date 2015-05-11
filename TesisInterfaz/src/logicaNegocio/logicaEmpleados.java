@@ -19,6 +19,18 @@ public class logicaEmpleados {
     public void agregarEmpleado(empleado emp) {
             
        System.out.println("valido todo");
+        System.out.println(emp.getAfp());
+         System.out.println(emp.getApellido());
+          System.out.println(emp.getDui());
+           System.out.println(emp.getNit());
+            System.out.println(emp.getNombre());
+             System.out.println(emp.getNumCuenta());
+              System.out.println(emp.getIsss());
+               System.out.println(emp.getEstCivil());
+                System.out.println(emp.getGenero());
+                 
+       
+       
        datos.guardaEmpleado(emp);
         }   
            

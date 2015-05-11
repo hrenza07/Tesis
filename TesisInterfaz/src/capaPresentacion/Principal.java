@@ -6,7 +6,12 @@
 
 package capaPresentacion;
 
+import capaDatos.departamentoDAO;
+import encapsulacion.departamento;
 import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import logicaNegocio.logicaDepartamento;
 
 /**
  *
@@ -52,7 +57,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        crearDepart = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
@@ -135,13 +140,13 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Departamentos");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        crearDepart.setText("Departamentos");
+        crearDepart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                crearDepartActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(crearDepart);
 
         jMenuItem3.setText("Cargos");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -262,7 +267,7 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void crearDepartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDepartActionPerformed
         // TODO add your handling code here:
         y=new AdmDepartamentos();
         panelMain.removeAll();
@@ -270,8 +275,9 @@ public class Principal extends javax.swing.JFrame {
         panelMain.setLayout(new java.awt.BorderLayout());
         panelMain.add(y);
         panelMain.revalidate();
+       
         
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_crearDepartActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -283,7 +289,8 @@ public class Principal extends javax.swing.JFrame {
         panelMain.revalidate();
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+ 
+    
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem12ActionPerformed
@@ -389,6 +396,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem crearDepart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -408,7 +416,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

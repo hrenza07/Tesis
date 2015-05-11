@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+     <class name="encapsulacion.objetivos" schema="pribantsa" table="objdepartamento">
+          <id name="id" column="id_objetivodep">
+            <generator class="sequence">
+             <param name="sequence">pribantsa.obj_departamento_id_objetivodep_seq</param> 
+            </generator>
+         </id>
+     <property name="tipo" column="tipo" type="string"/>
+     <property name="objDescripcion" column="descripcion" type="string"/>     
+     
+     <many-to-one name="dep" class="encapsulacion.departamento" fetch="select">
+        <column name="id_departamento"/>
+     </many-to-one>
+     
+     </class>     
+</hibernate-mapping>

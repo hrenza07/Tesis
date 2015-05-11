@@ -70,10 +70,10 @@ public class crearEmpleado extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        estcivilcombo = new javax.swing.JComboBox();
         domicilio = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        generocombo = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         edadEmpleado = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -138,11 +138,11 @@ public class crearEmpleado extends javax.swing.JFrame {
 
         jLabel10.setText("Estado Civil:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        estcivilcombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Soltero", "Casado", "Divorciado\t", "Viudo" }));
 
         jLabel11.setText("Genero:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
+        generocombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
 
         jLabel15.setText("Edad:");
 
@@ -198,8 +198,8 @@ public class crearEmpleado extends javax.swing.JFrame {
                                 .addComponent(jLabel10)
                                 .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(generocombo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(estcivilcombo, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(67, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -263,12 +263,12 @@ public class crearEmpleado extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(afp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(generocombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(estcivilcombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -642,7 +642,9 @@ public class crearEmpleado extends javax.swing.JFrame {
         emp.setCargo(comboCargo.getSelectedItem().toString());
         emp.setDepartamento(comboDepart.getSelectedItem().toString());
         emp.setNumCuenta(numCuenta.getText());
-       
+        emp.setEstCivil(estcivilcombo.getSelectedItem().toString());
+        emp.setGenero(generocombo.getSelectedItem().toString());
+        
         for(int fila=0;fila<mod.getRowCount();fila++){
                 es.setNivel(mod.getValueAt(fila,0).toString());
                 es.setTitulo(mod.getValueAt(fila,1).toString());
@@ -789,11 +791,11 @@ public class crearEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField domicilio;
     private javax.swing.JFormattedTextField duiEmpleado;
     private javax.swing.JTextField edadEmpleado;
+    private javax.swing.JComboBox estcivilcombo;
+    private javax.swing.JComboBox generocombo;
     private javax.swing.JButton guardarEmpleado;
     private javax.swing.JFormattedTextField isss;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

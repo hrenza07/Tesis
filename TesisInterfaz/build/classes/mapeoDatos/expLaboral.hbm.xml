@@ -6,7 +6,7 @@
      <class name="encapsulacion.experienciaLaboral" schema="pribantsa" table="exp_laboral">
           <id name="id" column="id_explaboral">
             <generator class="sequence">
-             <param name="sequence">exp_laboral_id_explaboral_seq</param> 
+             <param name="sequence">pribantsa.exp_laboral_id_explaboral_seq</param> 
             </generator>
           </id>
      <property name="lugar" column="lugar" type="string"/>
@@ -14,7 +14,7 @@
      <property name="cargo" column="cargo" type="string"/>     
      
      <many-to-one name="emp" class="encapsulacion.empleado">
-        <column name="idEmpleado" not-null="true"/>
+        <column name="idEmpleado"/>
      </many-to-one>
      
      </class>     

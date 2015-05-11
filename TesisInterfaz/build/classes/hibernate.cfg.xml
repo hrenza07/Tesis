@@ -19,6 +19,8 @@
         <mapping resource="mapeoDatos/empleado.hbm.xml"/>
          <mapping resource="mapeoDatos/estudios.hbm.xml"/>
           <mapping resource="mapeoDatos/expLaboral.hbm.xml"/>
+          <mapping resource="mapeoDatos/departamento.hbm.xml"/>
+          <mapping resource="mapeoDatos/objetivos.hbm.xml"/>
     </session-factory>
     
 </hibernate-configuration>
