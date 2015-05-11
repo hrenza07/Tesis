@@ -12,7 +12,7 @@
      <property name="nombre" column="nombre" type="string"/>
      <property name="descripcion" column="descripcion" type="string"/>
      
-      <list name="objDepart" table="objdepartamento" lazy="false" cascade="all">
+      <list name="objDepart" table="objdepartamento" lazy="false" cascade="save-update">
             <key>
                 <column name="id_departamento"/>
             </key>

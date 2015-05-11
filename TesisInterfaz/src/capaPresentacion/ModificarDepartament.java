@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package capaPresentacion;
 
 import encapsulacion.departamento;
@@ -17,18 +15,16 @@ import logicaNegocio.logicaDepartamento;
 
 /**
  *
- * @author byron
+ * @author Xino
  */
-public class crearDepart extends javax.swing.JFrame {
-    DefaultTableModel modOb;
+public class ModificarDepartament extends javax.swing.JFrame {
+    private DefaultTableModel modOb;
+    List<objetivos> objetivosDepartamento=null;
     /**
-     * Creates new form crearDepart
+     * Creates new form ModificarDepartament
      */
-    public crearDepart() {
-        super("Crear Nuevo Departamento");
+    public ModificarDepartament() {
         initComponents();
-        agregarObjetivos.setEnabled(false);
-        
     }
 
     /**
@@ -55,9 +51,11 @@ public class crearDepart extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
-        agregarDepartamento = new javax.swing.JButton();
+        actualizarDepartamento = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        idDep = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("Nombre del Departamento");
 
@@ -70,7 +68,15 @@ public class crearDepart extends javax.swing.JFrame {
             new String [] {
                 "tipo", "Objetivo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tablaObje);
 
         jLabel1.setText("Tipo de Objetivo");
@@ -162,12 +168,14 @@ public class crearDepart extends javax.swing.JFrame {
             }
         });
 
-        agregarDepartamento.setText("Guardar");
-        agregarDepartamento.addActionListener(new java.awt.event.ActionListener() {
+        actualizarDepartamento.setText("Actualizar");
+        actualizarDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarDepartamentoActionPerformed(evt);
+                actualizarDepartamentoActionPerformed(evt);
             }
         });
+
+        jLabel3.setText("ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,12 +189,17 @@ public class crearDepart extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nomDep, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(nomDep, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(idDep, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37))
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(153, 153, 153)
-                        .addComponent(agregarDepartamento)
+                        .addComponent(actualizarDepartamento)
                         .addGap(45, 45, 45)
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -197,7 +210,9 @@ public class crearDepart extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(nomDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(idDep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
@@ -205,8 +220,8 @@ public class crearDepart extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(agregarDepartamento))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(actualizarDepartamento))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,6 +244,37 @@ public class crearDepart extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void mostrarDepart(int i){
+        
+        departamento dep=new departamento();
+        logicaDepartamento logDep= new logicaDepartamento();
+        List<objetivos> objDep=new ArrayList<>();
+        modOb=(DefaultTableModel) tablaObje.getModel();
+        
+        dep=logDep.buscar(i);
+        
+        nomDep.setText(dep.getNombre());
+        descripcion.setText(dep.getDescripcion());
+        idDep.setText(String.valueOf(dep.getId()));
+        
+        objetivosDepartamento=dep.getObjDepart();
+        for(objetivos obj: objetivosDepartamento) {
+                    modOb.addRow(new Object[]{obj.getTipo(),obj.getObjDescripcion()});
+                    
+        }
+        
+    }
+    
+    
+    private void objetivoDepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_objetivoDepKeyReleased
+        // TODO add your handling code here:
+        if(objetivoDep.getText().length()!=0){
+            agregarObjetivos.setEnabled(true);
+        }else{
+            agregarObjetivos.setEnabled(false);
+        }
+    }//GEN-LAST:event_objetivoDepKeyReleased
+
     private void agregarObjetivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarObjetivosActionPerformed
         // TODO add your handling code here:
         modOb=(DefaultTableModel)tablaObje.getModel();
@@ -236,21 +282,19 @@ public class crearDepart extends javax.swing.JFrame {
         objetivoDep.setText("");
     }//GEN-LAST:event_agregarObjetivosActionPerformed
 
-    private void objetivoDepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_objetivoDepKeyReleased
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(objetivoDep.getText().length()!=0){
-                agregarObjetivos.setEnabled(true);
-        }else{
-            agregarObjetivos.setEnabled(false);
-        }
-    }//GEN-LAST:event_objetivoDepKeyReleased
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void agregarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDepartamentoActionPerformed
+    private void actualizarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarDepartamentoActionPerformed
         // TODO add your handling code here:
-        departamento dep=new departamento();
-        
         logicaDepartamento logDep= new logicaDepartamento();
+        departamento dep=new departamento();
         List<objetivos> objDep=new ArrayList<>();
+        dep=logDep.buscar(Integer.parseInt(idDep.getText()));
+        System.out.println(dep.getNombre());
+     
         modOb=(DefaultTableModel)tablaObje.getModel();
 
         try{
@@ -260,28 +304,21 @@ public class crearDepart extends javax.swing.JFrame {
             // dep.setJefe(comboJefeDepar.getSelectedItem().toString());
             dep.setTipoObjetivo(comboTipoObjetivo.getSelectedItem().toString());
 
-            for(int fila=0;fila<modOb.getRowCount();fila++){ //recorro las columnas
+            for(int fila=0;fila<modOb.getRowCount();fila++){
                 objetivos obj=new objetivos();
                 obj.setTipo(modOb.getValueAt(fila,0).toString());
-                System.out.println(obj.getTipo());
                 obj.setObjDescripcion(modOb.getValueAt(fila,1).toString());
-                System.out.println(obj.getObjDescripcion());
                 objDep.add(obj);
             }
             dep.setObjDepart(objDep);
             System.out.println(dep.getNombre());
             logDep.validar(dep);
-            logDep.agregarDepartamento(dep);
+            logDep.actualizar(dep);
 
         }catch(exceptionClass ex){
             JOptionPane.showMessageDialog(null,ex.getError(),"!Error¡",JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_agregarDepartamentoActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_actualizarDepartamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,32 +337,33 @@ public class crearDepart extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(crearDepart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDepartament.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(crearDepart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDepartament.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(crearDepart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDepartament.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(crearDepart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDepartament.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new crearDepart().setVisible(true);
+                new ModificarDepartament().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton agregarDepartamento;
+    private javax.swing.JButton actualizarDepartamento;
     private javax.swing.JButton agregarObjetivos;
     private javax.swing.JComboBox comboTipoObjetivo;
     private javax.swing.JTextArea descripcion;
+    private javax.swing.JLabel idDep;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -8,6 +8,7 @@ package capaPresentacion;
 
 import encapsulacion.departamento;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logicaNegocio.logicaDepartamento;
 
@@ -26,6 +27,7 @@ public class AdmDepartamentos extends javax.swing.JPanel {
     
     infoDepartamento i;
     crearDepart dep;
+    ModificarDepartament depM;
   
 
     /**
@@ -40,8 +42,8 @@ public class AdmDepartamentos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDepartamento = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        agregarDepartamento = new javax.swing.JButton();
+        modicarDepartamento = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         actualizar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -68,18 +70,23 @@ public class AdmDepartamentos extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administracion de Departamentos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AvantGarde LT Medium", 0, 12))); // NOI18N
 
-        jButton1.setText("Agregar ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        agregarDepartamento.setText("Agregar");
+        agregarDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                agregarDepartamentoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Modificar ");
+        modicarDepartamento.setText("Modificar ");
+        modicarDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modicarDepartamentoActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Eliminar");
 
-        actualizar.setText("jButton4");
+        actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Refresh_Icon.png"))); // NOI18N
         actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizarActionPerformed(evt);
@@ -92,13 +99,13 @@ public class AdmDepartamentos extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(agregarDepartamento)
+                .addGap(29, 29, 29)
+                .addComponent(modicarDepartamento)
+                .addGap(32, 32, 32)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
@@ -106,11 +113,11 @@ public class AdmDepartamentos extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(agregarDepartamento)
+                    .addComponent(modicarDepartamento)
                     .addComponent(jButton3)
                     .addComponent(actualizar))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Derpartamento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AvantGarde LT Medium", 0, 12))); // NOI18N
@@ -190,7 +197,7 @@ public class AdmDepartamentos extends javax.swing.JPanel {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -213,16 +220,17 @@ public class AdmDepartamentos extends javax.swing.JPanel {
         
     }//GEN-LAST:event_tablaDepartamentoMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void agregarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDepartamentoActionPerformed
         // TODO add your handling code here:
         dep=new crearDepart();
         dep.setVisible(true);
         dep.pack();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_agregarDepartamentoActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         // TODO add your handling code here:
+        LimpiarJTable();
         tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
         logicaDepartamento dep=new logicaDepartamento();       
         Object [] fila =new Object[2];
@@ -237,11 +245,39 @@ public class AdmDepartamentos extends javax.swing.JPanel {
         
     }//GEN-LAST:event_actualizarActionPerformed
 
+    private void modicarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modicarDepartamentoActionPerformed
+        // TODO add your handling code here:
+        
+        tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
+        int dato;
+       
+        try{
+        
+        dato=Integer.parseInt(String.valueOf(tablaDepart.getValueAt(tablaDepartamento.getSelectedRow(),0)));
+        depM=new ModificarDepartament();
+        depM.setVisible(true);
+        depM.pack();
+        depM.mostrarDepart(dato);
+        
+        }catch(IndexOutOfBoundsException e){
+           
+            JOptionPane.showMessageDialog(null,"Seleccione un Departamento","!Error¡",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_modicarDepartamentoActionPerformed
+
+    private void LimpiarJTable(){
+        tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
+        int a =tablaDepart.getRowCount()-1;
+        for(int i=a;i>=0;i--){ 
+            tablaDepart.removeRow(i);
+        }
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton agregarDepartamento;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
@@ -251,6 +287,7 @@ public class AdmDepartamentos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton modicarDepartamento;
     private javax.swing.JTable tablaDepartamento;
     // End of variables declaration//GEN-END:variables
 }

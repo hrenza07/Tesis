@@ -6,6 +6,7 @@ package logicaNegocio;
 
 import capaDatos.departamentoDAO;
 import encapsulacion.departamento;
+import encapsulacion.objetivos;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -16,9 +17,13 @@ import javax.swing.JOptionPane;
 public class logicaDepartamento {
     
     departamentoDAO datos=new departamentoDAO();
-    
+    List<objetivos> objetivosdep=null;
     public void agregarDepartamento(departamento dep) {
-         datos.guardarDepartamento(dep);
+  //     objetivosdep=dep.getObjDepart();
+    //     for(objetivos obj: objetivosdep) {
+      //              System.out.println(obj.getTipo()+" : "+ obj.getObjDescripcion());
+       // }
+        datos.guardarDepartamento(dep);
        }
     
     public List<departamento> consultar(){
@@ -32,6 +37,12 @@ public class logicaDepartamento {
         departamento depar=null;
         depar=datos.buscarDepartamento(ids);
         return depar;
+    
+    }
+    
+    public void actualizar(departamento dep){
+        
+        datos.Actualizar(dep);
     
     }
     

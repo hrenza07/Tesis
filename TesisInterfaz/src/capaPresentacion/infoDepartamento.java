@@ -16,7 +16,7 @@ import logicaNegocio.logicaDepartamento;
 public class infoDepartamento extends javax.swing.JPanel {
 
     departamento depart;
-    List<objetivos> objetivosDepartamento=null;
+    List<objetivos> objetivosDepartamento;
     /**
      * Creates new form infoDepartamento
      */
@@ -32,10 +32,9 @@ public class infoDepartamento extends javax.swing.JPanel {
       idInfo.setText(String.valueOf(iD));
       infoNombre.setText(depart.getNombre());
       infoDescripcion.setText(depart.getDescripcion());
-      
-     objetivosDepartamento=depart.getObjDepart();
+      objetivosDepartamento=depart.getObjDepart();
         for(objetivos obj: objetivosDepartamento) {
-                    System.out.println(obj.getTipo()+":"+obj.getObjDescripcion());
+                    System.out.println(obj.getTipo());
         }
     
     }

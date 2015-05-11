@@ -16,6 +16,8 @@
         <property name="connection.pool_size">1</property>
          <property name="hbm2ddl.auto">update</property>
          <property name="hibernate.show_sql">true</property>
+         <property name="format_sql">true</property>
+          <property name="use_sql_comments">true</property>
         <mapping resource="mapeoDatos/empleado.hbm.xml"/>
          <mapping resource="mapeoDatos/estudios.hbm.xml"/>
           <mapping resource="mapeoDatos/expLaboral.hbm.xml"/>

@@ -79,5 +79,26 @@ public class departamentoDAO {
         }  
         return dep;
   }
+   
+        public void Actualizar(Object d){
+   
+        try{ 
+            iniciaOperacion(); 
+            sesion.update(d);
+            tx.commit(); 
+       }catch (HibernateException he){ 
+        
+           manejaExcepcion(he); 
+           throw he; 
+        
+       }finally{ 
+        
+            sesion.close(); 
+    } 
+        
+        
+   
+   
+   }
   
 }
