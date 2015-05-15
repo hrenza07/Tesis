@@ -8,6 +8,7 @@ package encapsulacion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -20,7 +21,8 @@ public class departamento {
     private String descripcion;
     private String tipoObjetivo;
     private List <objetivos> objDepart=null;
-
+   
+    
     public departamento() {
     }
 
@@ -57,12 +59,13 @@ public class departamento {
     }
 
     public List<objetivos> getObjDepart() {
-        return objDepart;
-    }
-
+      return objDepart;
+     }
+    
     public void setObjDepart(List<objetivos> objDepart) {
-        this.objDepart = objDepart;
+     this.objDepart = objDepart;
     }
     
+ 
     
 }

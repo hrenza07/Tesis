@@ -9,7 +9,9 @@ package capaPresentacion;
 import encapsulacion.departamento;
 import encapsulacion.objetivos;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logicaNegocio.exceptionClass;
@@ -252,13 +254,11 @@ public class crearDepart extends javax.swing.JFrame {
         logicaDepartamento logDep= new logicaDepartamento();
         List<objetivos> objDep=new ArrayList<>();
         modOb=(DefaultTableModel)tablaObje.getModel();
-
+   
         try{
 
             dep.setNombre(nomDep.getText());
             dep.setDescripcion(descripcion.getText());
-            // dep.setJefe(comboJefeDepar.getSelectedItem().toString());
-            dep.setTipoObjetivo(comboTipoObjetivo.getSelectedItem().toString());
 
             for(int fila=0;fila<modOb.getRowCount();fila++){ //recorro las columnas
                 objetivos obj=new objetivos();

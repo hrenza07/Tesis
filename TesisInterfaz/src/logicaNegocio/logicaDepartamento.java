@@ -18,6 +18,7 @@ public class logicaDepartamento {
     
     departamentoDAO datos=new departamentoDAO();
     List<objetivos> objetivosdep=null;
+   
     public void agregarDepartamento(departamento dep) {
   //     objetivosdep=dep.getObjDepart();
     //     for(objetivos obj: objetivosdep) {
@@ -46,20 +47,21 @@ public class logicaDepartamento {
     
     }
     
-    
-    
-    
-    
-           
-    public void validar(departamento dep) throws exceptionClass {
+    public void eliminar(int i){
         
-            System.out.println("validando Nombre");
-           System.out.println(dep.getNombre());
+       departamento dep=null;
+       dep=buscar(i);
+        System.out.println(dep.getNombre());
+        System.out.println("departamento encontrado");
+        datos.eliminar(dep);
+    
+    }  
+          
+    public void validar(departamento dep) throws exceptionClass {
             
          if((dep.getNombre().length()<=0) || (!dep.getNombre().matches("^[A-Za-z ]*$"))){ //Validando Nombre 
             throw new exceptionClass("Datos Incorrectos","Campo: Nombre Departamento");
          }
-            System.out.println("validando descripcion");
          if((dep.getDescripcion().length()<=0)){ //Validando Descripcion 
             throw new exceptionClass("Datos Incorrectos","Descipcion del Departamento Vacio ");
          }    

@@ -6,7 +6,9 @@ package capaPresentacion;
 
 import encapsulacion.departamento;
 import encapsulacion.objetivos;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import logicaNegocio.logicaDepartamento;
 
 /**
@@ -15,8 +17,8 @@ import logicaNegocio.logicaDepartamento;
  */
 public class infoDepartamento extends javax.swing.JPanel {
 
-    departamento depart;
-    List<objetivos> objetivosDepartamento;
+     private departamento depart;
+     private DefaultTableModel modOb;
     /**
      * Creates new form infoDepartamento
      */
@@ -25,18 +27,23 @@ public class infoDepartamento extends javax.swing.JPanel {
     }
 
     public void CargarDepartamento(int id){
+      
       logicaDepartamento dep=new logicaDepartamento();  
       depart=dep.buscar(id);
       int iD=depart.getId();
-      //idInfo.setText(depart.getId());
+      modOb=(DefaultTableModel)tablaInfo.getModel();
+      List<objetivos> objetivosDepartamento=null;
+      List s1=new ArrayList();
+      s1.add(null);
+      
       idInfo.setText(String.valueOf(iD));
       infoNombre.setText(depart.getNombre());
       infoDescripcion.setText(depart.getDescripcion());
-      objetivosDepartamento=depart.getObjDepart();
-        for(objetivos obj: objetivosDepartamento) {
-                    System.out.println(obj.getTipo());
-        }
-    
+       objetivosDepartamento=depart.getObjDepart();
+      objetivosDepartamento.removeAll(s1);
+       for(objetivos obj: objetivosDepartamento) {     
+          modOb.addRow(new Object[]{obj.getTipo(),obj.getObjDescripcion()});
+        }    
     }
        
     /**
@@ -56,9 +63,10 @@ public class infoDepartamento extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         idInfo = new javax.swing.JLabel();
         infoNombre = new javax.swing.JLabel();
-        infoDescripcion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaInfo = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        infoDescripcion = new javax.swing.JTextArea();
 
         jLabel1.setText("ID:");
 
@@ -72,7 +80,7 @@ public class infoDepartamento extends javax.swing.JPanel {
 
         jLabel6.setText("Detalles de Departamento");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -88,7 +96,12 @@ public class infoDepartamento extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaInfo);
+
+        infoDescripcion.setEditable(false);
+        infoDescripcion.setColumns(20);
+        infoDescripcion.setRows(5);
+        jScrollPane2.setViewportView(infoDescripcion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -98,7 +111,7 @@ public class infoDepartamento extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
@@ -110,8 +123,8 @@ public class infoDepartamento extends javax.swing.JPanel {
                                 .addComponent(jLabel1)
                                 .addGap(59, 59, 59)
                                 .addComponent(idInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(infoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(jLabel6)))
@@ -132,20 +145,20 @@ public class infoDepartamento extends javax.swing.JPanel {
                     .addComponent(infoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(infoDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel idInfo;
-    private javax.swing.JLabel infoDescripcion;
+    private javax.swing.JTextArea infoDescripcion;
     private javax.swing.JLabel infoNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -154,6 +167,7 @@ public class infoDepartamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tablaInfo;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,6 +14,7 @@ public class objetivos {
     private String tipo;
     private String objDescripcion;
     private departamento dep;
+    private int idx;
 
     public objetivos() {
     }
@@ -48,6 +49,19 @@ public class objetivos {
 
     public void setObjDescripcion(String objDescripcion) {
         this.objDescripcion = objDescripcion;
+    }
+
+    public int getIdx() {
+        return idx;
+    }
+
+    public void setIdx(int idx) {
+        this.idx = idx;
+    }
+    
+    public String toString(){
+        
+            return String.valueOf(idx);
     }
     
 }

@@ -24,7 +24,7 @@ public class departamentoDAO {
     
       sesion = hibernateUtil.getSessionFactory().openSession();
       tx = sesion.beginTransaction();
-        
+      
         }
     
   private void manejaExcepcion(HibernateException he) throws HibernateException{
@@ -41,7 +41,7 @@ public class departamentoDAO {
     { 
         iniciaOperacion(); 
         System.out.println("sesion Iniciada");
-        sesion.save(s); 
+        sesion.save(s);
         tx.commit();
         sesion.close();
         System.out.println("sesion Cerrada");
@@ -95,10 +95,27 @@ public class departamentoDAO {
         
             sesion.close(); 
     } 
+  }
         
+     public void eliminar(Object dep){
+     
+         try { 
+            
+             iniciaOperacion(); 
+             sesion.delete(dep); 
+             tx.commit(); 
+    
+         }catch(HibernateException he){ 
         
-   
-   
-   }
+            manejaExcepcion(he); 
+            throw he; 
+    }finally{ 
+        
+             sesion.close(); 
+    } 
+     
+     
+     }   
+        
   
 }

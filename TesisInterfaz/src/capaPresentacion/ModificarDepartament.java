@@ -7,7 +7,10 @@ package capaPresentacion;
 import encapsulacion.departamento;
 import encapsulacion.objetivos;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logicaNegocio.exceptionClass;
@@ -208,11 +211,12 @@ public class ModificarDepartament extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nomDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(idDep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(idDep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(nomDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
@@ -250,19 +254,22 @@ public class ModificarDepartament extends javax.swing.JFrame {
         logicaDepartamento logDep= new logicaDepartamento();
         List<objetivos> objDep=new ArrayList<>();
         modOb=(DefaultTableModel) tablaObje.getModel();
+        List s1=new ArrayList();
+        s1.add(null);
         
         dep=logDep.buscar(i);
         
         nomDep.setText(dep.getNombre());
         descripcion.setText(dep.getDescripcion());
         idDep.setText(String.valueOf(dep.getId()));
-        
+ 
         objetivosDepartamento=dep.getObjDepart();
-        for(objetivos obj: objetivosDepartamento) {
-                    modOb.addRow(new Object[]{obj.getTipo(),obj.getObjDescripcion()});
-                    
-        }
+        objetivosDepartamento.removeAll(s1);
         
+         for(objetivos obj: objetivosDepartamento) {
+                    modOb.addRow(new Object[]{obj.getTipo(),obj.getObjDescripcion()});
+        }       
+ 
     }
     
     
@@ -292,27 +299,28 @@ public class ModificarDepartament extends javax.swing.JFrame {
         logicaDepartamento logDep= new logicaDepartamento();
         departamento dep=new departamento();
         List<objetivos> objDep=new ArrayList<>();
+        List s1=new ArrayList();
+        s1.add(null);
         dep=logDep.buscar(Integer.parseInt(idDep.getText()));
-        System.out.println(dep.getNombre());
-     
         modOb=(DefaultTableModel)tablaObje.getModel();
-
+        
         try{
-
+            
+            objDep=dep.getObjDepart();
             dep.setNombre(nomDep.getText());
             dep.setDescripcion(descripcion.getText());
-            // dep.setJefe(comboJefeDepar.getSelectedItem().toString());
-            dep.setTipoObjetivo(comboTipoObjetivo.getSelectedItem().toString());
-
-            for(int fila=0;fila<modOb.getRowCount();fila++){
-                objetivos obj=new objetivos();
+            objDep.removeAll(s1);
+            
+           for(int fila=0;fila<modOb.getRowCount();fila++){ //recorro las columnas
+               
+                objetivos obj=objDep.get(fila);
                 obj.setTipo(modOb.getValueAt(fila,0).toString());
                 obj.setObjDescripcion(modOb.getValueAt(fila,1).toString());
                 objDep.add(obj);
-            }
+           }
+                
             dep.setObjDepart(objDep);
-            System.out.println(dep.getNombre());
-            logDep.validar(dep);
+            logDep.validar(dep);     
             logDep.actualizar(dep);
 
         }catch(exceptionClass ex){

@@ -7,6 +7,7 @@
 package capaPresentacion;
 
 import encapsulacion.departamento;
+import encapsulacion.objetivos;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -44,7 +45,7 @@ public class AdmDepartamentos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         agregarDepartamento = new javax.swing.JButton();
         modicarDepartamento = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        eliminarDep = new javax.swing.JButton();
         actualizar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -84,7 +85,12 @@ public class AdmDepartamentos extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Eliminar");
+        eliminarDep.setText("Eliminar");
+        eliminarDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarDepActionPerformed(evt);
+            }
+        });
 
         actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Refresh_Icon.png"))); // NOI18N
         actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +109,7 @@ public class AdmDepartamentos extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(modicarDepartamento)
                 .addGap(32, 32, 32)
-                .addComponent(jButton3)
+                .addComponent(eliminarDep)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -115,7 +121,7 @@ public class AdmDepartamentos extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agregarDepartamento)
                     .addComponent(modicarDepartamento)
-                    .addComponent(jButton3)
+                    .addComponent(eliminarDep)
                     .addComponent(actualizar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -243,14 +249,15 @@ public class AdmDepartamentos extends javax.swing.JPanel {
             tablaDepart.addRow(fila);
         } 
         
+        
+        
+        
     }//GEN-LAST:event_actualizarActionPerformed
 
     private void modicarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modicarDepartamentoActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:   
         tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
         int dato;
-       
         try{
         
         dato=Integer.parseInt(String.valueOf(tablaDepart.getValueAt(tablaDepartamento.getSelectedRow(),0)));
@@ -265,6 +272,16 @@ public class AdmDepartamentos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_modicarDepartamentoActionPerformed
 
+    private void eliminarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDepActionPerformed
+        // TODO add your handling code here:
+        int dato;
+        tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
+        logicaDepartamento dep=new logicaDepartamento();  
+        dato=Integer.parseInt(String.valueOf(tablaDepart.getValueAt(tablaDepartamento.getSelectedRow(),0)));
+        dep.eliminar(dato);
+        
+    }//GEN-LAST:event_eliminarDepActionPerformed
+
     private void LimpiarJTable(){
         tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
         int a =tablaDepart.getRowCount()-1;
@@ -278,7 +295,7 @@ public class AdmDepartamentos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
     private javax.swing.JButton agregarDepartamento;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton eliminarDep;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
