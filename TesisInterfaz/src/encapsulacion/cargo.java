@@ -4,18 +4,32 @@
  */
 package encapsulacion;
 
+import java.util.List;
+
 /**
  *
  * @author Xino
  */
 public class cargo {
     
+    private int id;
     private String nombre;
-    private String dept;
     private String Descripcion;
-    private String Objetivo;
-    private String objetivoDes;
+    private double salMin;
+    private double salMax;
+    private List<funcionesCargo> funciones=null;
+    
+    public cargo() {
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -24,38 +38,37 @@ public class cargo {
         this.nombre = nombre;
     }
 
-    public String getDept() {
-        return dept;
-    }
-
-    public void setDept(String dept) {
-        this.dept = dept;
-    }
-
     public String getDescripcion() {
         return Descripcion;
     }
 
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
+    } 
+
+    public double getSalMin() {
+        return salMin;
     }
 
-    public String getObjetivo() {
-        return Objetivo;
+    public void setSalMin(double salMin) {
+        this.salMin = salMin;
     }
 
-    public void setObjetivo(String Objetivo) {
-        this.Objetivo = Objetivo;
+    public double getSalMax() {
+        return salMax;
     }
 
-    public String getObjetivoDes() {
-        return objetivoDes;
+    public void setSalMax(double salMax) {
+        this.salMax = salMax;
+    } 
+
+    public List<funcionesCargo> getFunciones() {
+        return funciones;
     }
 
-    public void setObjetivoDes(String objetivoDes) {
-        this.objetivoDes = objetivoDes;
+    public void setFunciones(List<funcionesCargo> funciones) {
+        this.funciones = funciones;
     }
     
 
-    
 }

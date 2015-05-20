@@ -23,6 +23,8 @@ import logicaNegocio.logicaDepartamento;
 public class ModificarDepartament extends javax.swing.JFrame {
     private DefaultTableModel modOb;
     List<objetivos> objetivosDepartamento=null;
+    departamento depart;
+    List s1=new ArrayList();
     /**
      * Creates new form ModificarDepartament
      */
@@ -50,6 +52,7 @@ public class ModificarDepartament extends javax.swing.JFrame {
         objetivoDep = new javax.swing.JTextField();
         agregarObjetivos = new javax.swing.JButton();
         comboTipoObjetivo = new javax.swing.JComboBox();
+        eliminarObjetivo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
@@ -101,6 +104,13 @@ public class ModificarDepartament extends javax.swing.JFrame {
 
         comboTipoObjetivo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primario", "Secundario" }));
 
+        eliminarObjetivo.setText("Eliminar");
+        eliminarObjetivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarObjetivoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -116,6 +126,8 @@ public class ModificarDepartament extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(comboTipoObjetivo, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(eliminarObjetivo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(agregarObjetivos))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -131,7 +143,8 @@ public class ModificarDepartament extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(agregarObjetivos)
-                    .addComponent(comboTipoObjetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboTipoObjetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminarObjetivo))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -250,11 +263,10 @@ public class ModificarDepartament extends javax.swing.JFrame {
 
     public void mostrarDepart(int i){
         
-        departamento dep=new departamento();
+        departamento dep;
         logicaDepartamento logDep= new logicaDepartamento();
         List<objetivos> objDep=new ArrayList<>();
         modOb=(DefaultTableModel) tablaObje.getModel();
-        List s1=new ArrayList();
         s1.add(null);
         
         dep=logDep.buscar(i);
@@ -284,9 +296,31 @@ public class ModificarDepartament extends javax.swing.JFrame {
 
     private void agregarObjetivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarObjetivosActionPerformed
         // TODO add your handling code here:
-        modOb=(DefaultTableModel)tablaObje.getModel();
-        modOb.addRow(new Object[]{comboTipoObjetivo.getSelectedItem().toString(),objetivoDep.getText()});
-        objetivoDep.setText("");
+       logicaDepartamento logDep= new logicaDepartamento();
+       modOb=(DefaultTableModel)tablaObje.getModel();
+       modOb.addRow(new Object[]{comboTipoObjetivo.getSelectedItem().toString(),objetivoDep.getText()});   
+       depart=logDep.buscar(Integer.parseInt(idDep.getText()));
+       List<objetivos> objDep=new ArrayList<>();
+       s1.add(null);
+      
+       try{
+            objDep=depart.getObjDepart(); 
+            objetivos obj=new objetivos();
+            objDep.removeAll(s1);
+            depart.setNombre(nomDep.getText());
+            depart.setDescripcion(descripcion.getText());
+            obj.setTipo(modOb.getValueAt(tablaObje.getRowCount()-1,0).toString());
+            obj.setObjDescripcion(modOb.getValueAt(tablaObje.getRowCount()-1,1).toString());
+            objDep.add(obj);
+            
+            depart.setObjDepart(objDep);
+            logDep.validar(depart);
+            logDep.actualizar(depart);
+
+        }catch(exceptionClass ex){
+            JOptionPane.showMessageDialog(null,ex.getError(),"!Error¡",JOptionPane.ERROR_MESSAGE);
+        }
+       objetivoDep.setText("");
     }//GEN-LAST:event_agregarObjetivosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -299,7 +333,6 @@ public class ModificarDepartament extends javax.swing.JFrame {
         logicaDepartamento logDep= new logicaDepartamento();
         departamento dep=new departamento();
         List<objetivos> objDep=new ArrayList<>();
-        List s1=new ArrayList();
         s1.add(null);
         dep=logDep.buscar(Integer.parseInt(idDep.getText()));
         modOb=(DefaultTableModel)tablaObje.getModel();
@@ -311,22 +344,40 @@ public class ModificarDepartament extends javax.swing.JFrame {
             dep.setDescripcion(descripcion.getText());
             objDep.removeAll(s1);
             
-           for(int fila=0;fila<modOb.getRowCount();fila++){ //recorro las columnas
-               
+           for(int fila=0;fila<modOb.getRowCount();fila++){  
                 objetivos obj=objDep.get(fila);
                 obj.setTipo(modOb.getValueAt(fila,0).toString());
                 obj.setObjDescripcion(modOb.getValueAt(fila,1).toString());
                 objDep.add(obj);
+                objDep.removeAll(s1);
            }
-                
-            dep.setObjDepart(objDep);
-            logDep.validar(dep);     
-            logDep.actualizar(dep);
-
+           dep.setObjDepart(objDep);
+           logDep.validar(dep);     
+            
+     int i=JOptionPane.showConfirmDialog(null, "Registro Actualizado Correctamente","Actualizado", JOptionPane.OK_CANCEL_OPTION);
+            if(i==0){
+                logDep.actualizar(dep);
+                this.dispose();
+            }
         }catch(exceptionClass ex){
             JOptionPane.showMessageDialog(null,ex.getError(),"!Error¡",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_actualizarDepartamentoActionPerformed
+
+    private void eliminarObjetivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarObjetivoActionPerformed
+        // TODO add your handling code here:
+        modOb=(DefaultTableModel)tablaObje.getModel();
+        departamento dep;
+        logicaDepartamento logDep= new logicaDepartamento();
+        dep=logDep.buscar(Integer.parseInt(idDep.getText()));
+        List<objetivos> objDep=new ArrayList<>();
+        objDep=dep.getObjDepart();
+        objDep.removeAll(s1);
+        int i=tablaObje.getSelectedRow();
+        modOb.removeRow(i);
+        objDep.remove(i);
+        logDep.actualizar(dep);      
+    }//GEN-LAST:event_eliminarObjetivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,6 +418,7 @@ public class ModificarDepartament extends javax.swing.JFrame {
     private javax.swing.JButton agregarObjetivos;
     private javax.swing.JComboBox comboTipoObjetivo;
     private javax.swing.JTextArea descripcion;
+    private javax.swing.JButton eliminarObjetivo;
     private javax.swing.JLabel idDep;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

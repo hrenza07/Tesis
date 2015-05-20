@@ -31,7 +31,6 @@ public class hibernateUtil {
         }catch (HibernateException he) 
         { 
            System.err.println("Ocurrió un error en la inicialización de la SessionFactory: " + he); 
-           he.printStackTrace();
            throw new ExceptionInInitializerError(he); 
         } 
     }  

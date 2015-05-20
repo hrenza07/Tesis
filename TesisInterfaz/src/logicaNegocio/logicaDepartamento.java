@@ -20,10 +20,6 @@ public class logicaDepartamento {
     List<objetivos> objetivosdep=null;
    
     public void agregarDepartamento(departamento dep) {
-  //     objetivosdep=dep.getObjDepart();
-    //     for(objetivos obj: objetivosdep) {
-      //              System.out.println(obj.getTipo()+" : "+ obj.getObjDescripcion());
-       // }
         datos.guardarDepartamento(dep);
        }
     

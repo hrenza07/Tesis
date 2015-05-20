@@ -58,10 +58,4 @@ public class objetivos {
     public void setIdx(int idx) {
         this.idx = idx;
     }
-    
-    public String toString(){
-        
-            return String.valueOf(idx);
-    }
-    
 }

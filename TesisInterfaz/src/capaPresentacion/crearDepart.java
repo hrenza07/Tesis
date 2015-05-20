@@ -269,7 +269,6 @@ public class crearDepart extends javax.swing.JFrame {
                 objDep.add(obj);
             }
             dep.setObjDepart(objDep);
-            System.out.println(dep.getNombre());
             logDep.validar(dep);
             logDep.agregarDepartamento(dep);
 
