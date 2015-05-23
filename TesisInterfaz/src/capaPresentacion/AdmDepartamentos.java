@@ -6,24 +6,29 @@
 
 package capaPresentacion;
 
+import encapsulacion.departamento;
+import encapsulacion.objetivos;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import logicaNegocio.logicaDepartamento;
 
 /**
  *
  * @author byron
  */
-public class admCargo extends javax.swing.JPanel {
-
-      
-    crearCargo cc;
-    DefaultTableModel tablaCargo;
-    infoDepartamento inf;
+public class AdmDepartamentos extends javax.swing.JPanel {
+    DefaultTableModel tablaDepart;
     /**
-     * Creates new form admCargo
+     * Creates new form AdmDepartamentos
      */
-    public admCargo() {
+    public AdmDepartamentos() {
         initComponents();
     }
+    
+    infoDepartamento i;
+    crearDepart dep;
+    ModificarDepartament depM;
   
 
     /**
@@ -35,10 +40,8 @@ public class admCargo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtableCargos = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
+        tablaDepartamento = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         agregarDepartamento = new javax.swing.JButton();
         modicarDepartamento = new javax.swing.JButton();
@@ -48,45 +51,22 @@ public class admCargo extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jtableCargos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDepartamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Puesto Trabajo"
+                "ID", "Nombre"
             }
         ));
-        jtableCargos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaDepartamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtableCargosMouseClicked(evt);
+                tablaDepartamentoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtableCargos);
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalles de Puesto Trabajo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AvantGarde LT Medium", 0, 12))); // NOI18N
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
+        jScrollPane1.setViewportView(tablaDepartamento);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administracion de Departamentos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AvantGarde LT Medium", 0, 12))); // NOI18N
 
@@ -129,7 +109,7 @@ public class admCargo extends javax.swing.JPanel {
                 .addComponent(modicarDepartamento)
                 .addGap(32, 32, 32)
                 .addComponent(eliminarDep)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -177,6 +157,19 @@ public class admCargo extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalles de Departamento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AvantGarde LT Medium", 0, 12))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 423, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,102 +177,113 @@ public class admCargo extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(11, 11, 11))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
+                        .addGap(14, 14, 14)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtableCargosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableCargosMouseClicked
+    private void tablaDepartamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDepartamentoMouseClicked
         // TODO add your handling code here:
-
-      tablaCargo=(DefaultTableModel)jtableCargos.getModel();
-      inf=new infoDepartamento();
-      String dato;
-   /**     int iD;
-        jPanel5.removeAll();
-        jPanel5.repaint();
-        dato=String.valueOf(tablaDepart.getValueAt(tablaCargos.getSelectedRow(),0));
+        
+        tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
+        i=new infoDepartamento();
+        String dato;
+        int iD;
+        jPanel2.removeAll();
+        jPanel2.repaint();
+        dato=String.valueOf(tablaDepart.getValueAt(tablaDepartamento.getSelectedRow(),0));
         iD=Integer.parseInt(dato);
         i.CargarDepartamento(iD);
         i.setVisible(true);
         jPanel2.setLayout(new java.awt.BorderLayout());
         jPanel2.add(i);
-        jPanel2.revalidate();**/
-
-    }//GEN-LAST:event_jtableCargosMouseClicked
+        jPanel2.revalidate();
+        
+    }//GEN-LAST:event_tablaDepartamentoMouseClicked
 
     private void agregarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDepartamentoActionPerformed
         // TODO add your handling code here:
-     /**   dep=new crearDepart();
+        dep=new crearDepart();
         dep.setVisible(true);
         dep.pack();
-        **/
+        
     }//GEN-LAST:event_agregarDepartamentoActionPerformed
 
-    private void modicarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modicarDepartamentoActionPerformed
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         // TODO add your handling code here:
-        /**tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
+        LimpiarJTable();
+        tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
+        logicaDepartamento dep=new logicaDepartamento();       
+        Object [] fila =new Object[2];
+        List<departamento> department=null;
+        department=dep.consultar();
+        for(departamento c : department) 
+        { 
+            fila[0]= c.getId();
+            fila[1]= c.getNombre();
+            tablaDepart.addRow(fila);
+        } 
+        
+        
+        
+        
+    }//GEN-LAST:event_actualizarActionPerformed
+
+    private void modicarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modicarDepartamentoActionPerformed
+        // TODO add your handling code here:   
+        tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
         int dato;
         try{
-
-            dato=Integer.parseInt(String.valueOf(tablaDepart.getValueAt(tablaDepartamento.getSelectedRow(),0)));
-            depM=new ModificarDepartament();
-            depM.setVisible(true);
-            depM.pack();
-            depM.mostrarDepart(dato);
-
+        
+        dato=Integer.parseInt(String.valueOf(tablaDepart.getValueAt(tablaDepartamento.getSelectedRow(),0)));
+        depM=new ModificarDepartament();
+        depM.setVisible(true);
+        depM.pack();
+        depM.mostrarDepart(dato);
+        
         }catch(IndexOutOfBoundsException e){
-
+           
             JOptionPane.showMessageDialog(null,"Seleccione un Departamento","!Error¡",JOptionPane.ERROR_MESSAGE);
-        }**/
+        }
     }//GEN-LAST:event_modicarDepartamentoActionPerformed
 
     private void eliminarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarDepActionPerformed
         // TODO add your handling code here:
-      /**  int dato;
+        int dato;
         tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
-        logicaDepartamento dep=new logicaDepartamento();
+        logicaDepartamento dep=new logicaDepartamento();  
         dato=Integer.parseInt(String.valueOf(tablaDepart.getValueAt(tablaDepartamento.getSelectedRow(),0)));
         dep.eliminar(dato);
-        **/
+        
     }//GEN-LAST:event_eliminarDepActionPerformed
 
-    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        // TODO add your handling code here:
-      /**  LimpiarJTable();
+    private void LimpiarJTable(){
         tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
-        logicaDepartamento dep=new logicaDepartamento();
-        Object [] fila =new Object[2];
-        List<departamento> department=null;
-        department=dep.consultar();
-        for(departamento c : department)
-        {
-            fila[0]= c.getId();
-            fila[1]= c.getNombre();
-            tablaDepart.addRow(fila);
+        int a =tablaDepart.getRowCount()-1;
+        for(int i=a;i>=0;i--){ 
+            tablaDepart.removeRow(i);
         }
-        **/
-    }//GEN-LAST:event_actualizarActionPerformed
+    }
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
@@ -288,12 +292,11 @@ public class admCargo extends javax.swing.JPanel {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable jtableCargos;
     private javax.swing.JButton modicarDepartamento;
+    private javax.swing.JTable tablaDepartamento;
     // End of variables declaration//GEN-END:variables
 }
