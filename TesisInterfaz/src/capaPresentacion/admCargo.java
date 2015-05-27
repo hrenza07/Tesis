@@ -40,7 +40,7 @@ public class admCargo extends javax.swing.JPanel {
         jtableCargos = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        agregarDepartamento = new javax.swing.JButton();
+        agregarCargo = new javax.swing.JButton();
         modicarDepartamento = new javax.swing.JButton();
         eliminarDep = new javax.swing.JButton();
         actualizar = new javax.swing.JButton();
@@ -90,10 +90,10 @@ public class admCargo extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administracion de Departamentos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("AvantGarde LT Medium", 0, 12))); // NOI18N
 
-        agregarDepartamento.setText("Agregar");
-        agregarDepartamento.addActionListener(new java.awt.event.ActionListener() {
+        agregarCargo.setText("Agregar");
+        agregarCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarDepartamentoActionPerformed(evt);
+                agregarCargoActionPerformed(evt);
             }
         });
 
@@ -124,7 +124,7 @@ public class admCargo extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(agregarDepartamento)
+                .addComponent(agregarCargo)
                 .addGap(29, 29, 29)
                 .addComponent(modicarDepartamento)
                 .addGap(32, 32, 32)
@@ -138,7 +138,7 @@ public class admCargo extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agregarDepartamento)
+                    .addComponent(agregarCargo)
                     .addComponent(modicarDepartamento)
                     .addComponent(eliminarDep))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -227,13 +227,13 @@ public class admCargo extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jtableCargosMouseClicked
 
-    private void agregarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDepartamentoActionPerformed
+    private void agregarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCargoActionPerformed
         // TODO add your handling code here:
-     /**   dep=new crearDepart();
-        dep.setVisible(true);
-        dep.pack();
-        **/
-    }//GEN-LAST:event_agregarDepartamentoActionPerformed
+        cc=new crearCargo();
+        cc.setVisible(true);
+        cc.pack();
+        
+    }//GEN-LAST:event_agregarCargoActionPerformed
 
     private void modicarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modicarDepartamentoActionPerformed
         // TODO add your handling code here:
@@ -283,7 +283,7 @@ public class admCargo extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;
-    private javax.swing.JButton agregarDepartamento;
+    private javax.swing.JButton agregarCargo;
     private javax.swing.JButton eliminarDep;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;

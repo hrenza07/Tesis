@@ -32,7 +32,7 @@
             <one-to-many class="encapsulacion.estudios"/>
         </list>
      
-     <list name="exp" table="exp_laboral" fetch="select" cascade="all">
+   <!--  <list name="exp" table="exp_laboral" fetch="select" cascade="all">
             <key>
                 <column name="idEmpleado" not-null="true"/>
             </key>
@@ -41,6 +41,10 @@
             </list-index>
             <one-to-many class="encapsulacion.experienciaLaboral"/>
         </list>
+     -->
+     
+     
+     
      
      </class>     
 </hibernate-mapping>

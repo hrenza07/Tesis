@@ -4,6 +4,7 @@
  */
 package logicaNegocio;
 
+import capaDatos.puestoTrabajoDAO;
 import encapsulacion.cargo;
 
 /**
@@ -12,6 +13,14 @@ import encapsulacion.cargo;
  */
 public class logicaCargo {
     
+    puestoTrabajoDAO datos=new puestoTrabajoDAO();
+    
+    public void agregarDepartamento(cargo c) {
+        datos.guardarCargo(c);
+    }
+    
+    
+    
     public void validar(cargo c) throws exceptionClass {
             
          if((c.getNombre().length()<=0) || (!c.getNombre().matches("^[A-Za-z ]*$"))){ //Validando Nombre 
@@ -19,6 +28,6 @@ public class logicaCargo {
          }
          if(c.getDescripcion().trim().length()<=0){ //Validando Descripcion 
             throw new exceptionClass("Datos Incorrectos","Descipcion del Cargo");
-         }         
+         }    
     }
 }

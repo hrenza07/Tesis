@@ -3,23 +3,36 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-     <class name="encapsulacion.departamento" schema="pribantsa" table="departamento">
-          <id name="id" column="id_departamento">
+     <class name="encapsulacion.cargo" schema="pribantsa" table="puesto_trabajo">
+          <id name="id" column="id_puesto_trabajo">
             <generator class="sequence">
-             <param name="sequence">pribantsa.departamento_idepartamento_seq</param> 
+             <param name="sequence">pribantsa.puesto_trabajo_idpuestotrabajo_seq</param> 
             </generator>
           </id>
      <property name="nombre" column="nombre" type="string"/>
      <property name="descripcion" column="descripcion" type="string"/>
+     <property name="salMin" column="salario_min" type="double"/>
+     <property name="salMax" column="salario_max" type="double"/>
      
-     <list name="objDepart" table="objdepartamento" lazy="false" cascade="all-delete-orphan">
+     <list name="funciones" table="objetivo" lazy="false" cascade="all-delete-orphan">
             <key>
-                <column name="id_departamento"/>
+                <column name="idpuesto_trabajo"/>
             </key>
             <list-index>
              <column name="idx"/>
             </list-index>
-            <one-to-many class="encapsulacion.objetivos"/>
+            <one-to-many class="encapsulacion.funcionesCargo"/>
+        </list>
+        
+      <list name="funciones" table="objetivo" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="idpuesto_trabajo"/>
+            </key>
+            <list-index>
+             <column name="idx"/>
+            </list-index>
+            <one-to-many class="encapsulacion.funcionesCargo"/>
         </list> 
+         
      </class>     
 </hibernate-mapping>
