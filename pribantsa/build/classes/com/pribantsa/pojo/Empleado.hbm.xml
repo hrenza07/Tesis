@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-26-2015 11:50:06 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.pribantsa.pojo.Empleado" table="empleado" schema="pribantsa">
+        <id name="empleadoId" type="int">
+            <column name="empleado_id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="puestoTrabajo" class="com.pribantsa.pojo.PuestoTrabajo" fetch="select">
+            <column name="id_PuestoTrabajo" not-null="true" />
+        </many-to-one>
+        <property name="dui" type="string">
+            <column name="dui" not-null="true" />
+        </property>
+        <property name="isss" type="string">
+            <column name="isss" not-null="true" />
+        </property>
+        <property name="afp" type="string">
+            <column name="afp" not-null="true" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" />
+        </property>
+        <property name="idDepartamento" type="int">
+            <column name="id_departamento" not-null="true" />
+        </property>
+        <property name="nit" type="string">
+            <column name="nit" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" not-null="true" />
+        </property>
+        <property name="cuenta" type="string">
+            <column name="cuenta" not-null="true" />
+        </property>
+        <property name="salario" type="double">
+            <column name="salario" precision="17" scale="17" not-null="true" />
+        </property>
+        <property name="edad" type="java.lang.Integer">
+            <column name="edad" />
+        </property>
+        <property name="estadoCivil" type="string">
+            <column name="estado_civil" />
+        </property>
+        <property name="idManager" type="java.lang.Integer">
+            <column name="id_manager" />
+        </property>
+        <property name="idx" type="java.lang.Integer">
+            <column name="idx" />
+        </property>
+        <set name="sancions" table="sancion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Sancion" />
+        </set>
+        <set name="descuentos" table="descuento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Descuento" />
+        </set>
+        <set name="telefonos" table="telefono" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Telefono" />
+        </set>
+        <set name="expLaborals" table="exp_laboral" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.ExpLaboral" />
+        </set>
+        <set name="reconocimientos" table="reconocimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Reconocimiento" />
+        </set>
+        <set name="correos" table="correo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Correo" />
+        </set>
+        <set name="puestoHistoricos" table="puesto_historico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.PuestoHistorico" />
+        </set>
+        <set name="vacacions" table="vacacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Vacacion" />
+        </set>
+        <set name="bonos" table="bono" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Bono" />
+        </set>
+        <set name="educacions" table="educacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Educacion" />
+        </set>
+        <set name="permisos" table="permiso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Permiso" />
+        </set>
+        <set name="evaluacions" table="evaluacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Evaluacion" />
+        </set>
+        <set name="contratos" table="contrato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Contrato" />
+        </set>
+        <set name="capacitacions" table="capacitacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Capacitacion" />
+        </set>
+        <set name="planillas" table="planilla" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Planilla" />
+        </set>
+    </class>
+</hibernate-mapping>

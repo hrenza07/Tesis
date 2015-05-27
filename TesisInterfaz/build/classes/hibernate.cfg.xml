@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC
-"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-   <session-factory>
-       <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-       <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-  <!--     <property name="connection.url">jdbc:mysql://localhost/pruebaHi</property> -->   
-   <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/Tesis</property> 
-  <!--<property name="hibernate.default_schema">pribantsa</property> 
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <!--     <property name="connection.url">jdbc:mysql://localhost/pruebaHi</property> -->
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Tesis</property>
+    <!--<property name="hibernate.default_schema">pribantsa</property> 
   <property name="hibernate.connection.url">jdbc:postgresql://localhost/pribantsa:5433/public</property> -->
-       <property name="connection.username">byron</property>
-        <property name="connection.password">0000</property> 
-        <property name="connection.pool_size">1</property>
-         <property name="hbm2ddl.auto">update</property>
-         <property name="hibernate.show_sql">true</property>
-         <property name="format_sql">true</property>
-          <property name="use_sql_comments">true</property>
-        <mapping resource="mapeoDatos/empleado.hbm.xml"/>
-         <mapping resource="mapeoDatos/estudios.hbm.xml"/>
-          <mapping resource="mapeoDatos/expLaboral.hbm.xml"/>
-          <mapping resource="mapeoDatos/departamento.hbm.xml"/>
-          <mapping resource="mapeoDatos/objetivos.hbm.xml"/>
-    </session-factory>
-    
+    <property name="connection.username">henry</property>
+    <property name="connection.password">0000</property>
+    <property name="connection.pool_size">1</property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="format_sql">true</property>
+    <property name="use_sql_comments">true</property>
+    <mapping resource="mapeoDatos/empleado.hbm.xml"/>
+    <mapping resource="mapeoDatos/estudios.hbm.xml"/>
+    <mapping resource="mapeoDatos/expLaboral.hbm.xml"/>
+    <mapping resource="mapeoDatos/departamento.hbm.xml"/>
+    <mapping resource="mapeoDatos/objetivos.hbm.xml"/>
+  </session-factory>
 </hibernate-configuration>

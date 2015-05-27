@@ -32,7 +32,6 @@ public class departamentoDAO {
     tx.rollback();
     he.printStackTrace();
     throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
-        
         }
     
   public void guardarDepartamento(Object s)

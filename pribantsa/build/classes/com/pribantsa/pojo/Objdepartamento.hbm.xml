@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-26-2015 11:50:06 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.pribantsa.pojo.Objdepartamento" table="objdepartamento" schema="pribantsa">
+        <id name="idObjetivodep" type="long">
+            <column name="id_objetivodep" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="departamento" class="com.pribantsa.pojo.Departamento" fetch="select">
+            <column name="id_departamento" />
+        </many-to-one>
+        <property name="tipo" type="string">
+            <column name="tipo" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
+        <property name="idx" type="java.lang.Integer">
+            <column name="idx" />
+        </property>
+    </class>
+</hibernate-mapping>

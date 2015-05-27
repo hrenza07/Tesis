@@ -4,33 +4,38 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
-    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Tesis</property>
+    <property name="hibernate.connection.username">henry</property>
     <property name="hibernate.connection.password">0000</property>
-    <mapping resource="com/pribantsa/demo/Permiso.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Transaccion.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Departamento.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Descuento.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/TipoBono.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Reconocimiento.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Capacitacion.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Correo.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/PuestoHistorico.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Empleado.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Sancion.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Objetivo.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/PuestoTrabajo.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Planilla.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/TipoContrato.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Bono.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Evaluacion.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Educacion.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Vacacion.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Usuario.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Criterio.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Telefono.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/TipoPermiso.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/TipoDescuento.hbm.xml"/>
-    <mapping resource="com/pribantsa/demo/Contrato.hbm.xml"/>
+    
+    <property name="connection.pool_size">1</property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="format_sql">true</property>
+    <property name="use_sql_comments">true</property>
+    
+    <mapping resource="com/pribantsa/pojo/Objetivo.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/TipoDescuento.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Vacacion.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Planilla.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Objdepartamento.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Departamento.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/PuestoHistorico.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Sancion.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Capacitacion.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Reconocimiento.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Contrato.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/TipoBono.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Permiso.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Correo.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/PuestoTrabajo.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Educacion.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Evaluacion.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Empleado.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Criterio.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Bono.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/ExpLaboral.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Telefono.hbm.xml"/>
+    <mapping resource="com/pribantsa/pojo/Descuento.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

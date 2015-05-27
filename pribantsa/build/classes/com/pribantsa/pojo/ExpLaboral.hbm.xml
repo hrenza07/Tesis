@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-26-2015 11:50:06 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.pribantsa.pojo.ExpLaboral" table="exp_laboral" schema="pribantsa">
+        <id name="idExplaboral" type="long">
+            <column name="id_explaboral" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="empleado" class="com.pribantsa.pojo.Empleado" fetch="select">
+            <column name="idEmpleado" />
+        </many-to-one>
+        <property name="lugar" type="string">
+            <column name="lugar" />
+        </property>
+        <property name="tiempo" type="java.lang.Integer">
+            <column name="tiempo" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="cargo" />
+        </property>
+        <property name="idx" type="java.lang.Integer">
+            <column name="idx" />
+        </property>
+    </class>
+</hibernate-mapping>

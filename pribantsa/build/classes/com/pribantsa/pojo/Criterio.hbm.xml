@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-26-2015 11:50:06 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.pribantsa.pojo.Criterio" table="criterio" schema="pribantsa">
+        <id name="idCriterio" type="int">
+            <column name="idCriterio" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="puestoTrabajo" class="com.pribantsa.pojo.PuestoTrabajo" fetch="select">
+            <column name="idPuesto" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" not-null="true" />
+        </property>
+        <property name="peso" type="int">
+            <column name="peso" not-null="true" />
+        </property>
+        <set name="evaluacions" table="evaluacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCriterio" not-null="true" />
+            </key>
+            <one-to-many class="com.pribantsa.pojo.Evaluacion" />
+        </set>
+    </class>
+</hibernate-mapping>

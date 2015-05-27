@@ -5,9 +5,8 @@
  */
 
 package pribantsa;
-import com.pribantsa.demo.Departamento;
-import com.pribantsa.hbn.DepartamentoDaoHibernate;
-import java.util.Date;
+import com.pribantsa.hbn.*;
+import com.pribantsa.pojo.*;
 /**
  *
  * @author henry
@@ -19,11 +18,11 @@ public class Pribantsa {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        DepartamentoDaoHibernate departamentoDAO = new DepartamentoDaoHibernate();
+        DepartamentoDAO departamentoDAO = new DepartamentoDAO();
         Departamento departamento = new Departamento();
-        departamento.setNombre("Contabilidad");
-        departamento.setDescripcion("Departamento de Contabilidad");
-        departamentoDAO.save(departamento);
+        departamento.setNombre("Rolando Palermo");
+        departamento.setDescripcion("Rodríguez Cruz");
+        departamentoDAO.guardarDepartamento(departamento);
     }
     
 }

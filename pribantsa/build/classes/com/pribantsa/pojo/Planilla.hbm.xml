@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-26-2015 11:50:06 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.pribantsa.pojo.Planilla" table="planilla" schema="pribantsa">
+        <id name="idPlanilla" type="int">
+            <column name="idPlanilla" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="empleado" class="com.pribantsa.pojo.Empleado" fetch="select">
+            <column name="idEmpleado" not-null="true" />
+        </many-to-one>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="13" not-null="true" />
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="13" not-null="true" />
+        </property>
+        <property name="diasTrabajados" type="java.lang.Double">
+            <column name="dias_trabajados" precision="17" scale="17" />
+        </property>
+        <property name="horas" type="java.lang.Double">
+            <column name="horas" precision="17" scale="17" />
+        </property>
+        <property name="extrasDiurnas" type="java.lang.Double">
+            <column name="extras_diurnas" precision="17" scale="17" />
+        </property>
+        <property name="extrasNocturnas" type="java.lang.Double">
+            <column name="extras_nocturnas" precision="17" scale="17" />
+        </property>
+        <property name="feriado" type="java.lang.Double">
+            <column name="feriado" precision="17" scale="17" />
+        </property>
+        <property name="salarioDevengado" type="java.lang.Double">
+            <column name="salario_devengado" precision="17" scale="17" />
+        </property>
+        <property name="descuentos" type="java.lang.Double">
+            <column name="descuentos" precision="17" scale="17" />
+        </property>
+    </class>
+</hibernate-mapping>
