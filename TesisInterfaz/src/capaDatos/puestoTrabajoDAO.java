@@ -4,6 +4,8 @@
  */
 package capaDatos;
 
+import encapsulacion.cargo;
+import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -48,7 +50,34 @@ public class puestoTrabajoDAO {
 }
   
 }
+ 
+    public List<cargo> obtenerCargos(){
   
+        List<cargo> c=null;
+        
+        try{
+             iniciaOperacion();
+             c=sesion.createQuery("from cargo").list();
+        
+        }finally{  
+            sesion.close();   
+        }  
+        return c;
+  }
+    
+     public cargo buscarCargo(int ids){
+  
+        cargo c=null;
+        
+        try{
+             iniciaOperacion();
+             c=(cargo)sesion.get(cargo.class, ids);
+        
+        }finally{  
+            sesion.close();   
+        }  
+        return c;
+  }
   
     
 }

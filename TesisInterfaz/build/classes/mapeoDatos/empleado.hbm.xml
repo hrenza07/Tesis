@@ -16,8 +16,7 @@
      <property name="afp" column="afp" type="string"/>     
      <property name="isss" column="isss" type="string"/>     
      <property name="numCuenta" column="cuenta" type="string"/>     
-     <property name="edad" column="edad" type="int"/>     
-    <!-- <property name="direccion" column="dui" type="int"/>   -->      
+     <property name="edad" column="edad" type="int"/>         
      <property name="salario" column="salario" type="double"/>
      <property name="Genero" column="sexo" type="string"/>
      <property name="estCivil" column="estado_civil" type="string"/>
@@ -31,20 +30,7 @@
             </list-index>
             <one-to-many class="encapsulacion.estudios"/>
         </list>
-     
-   <!--  <list name="exp" table="exp_laboral" fetch="select" cascade="all">
-            <key>
-                <column name="idEmpleado" not-null="true"/>
-            </key>
-            <list-index>
-             <column name="idx"/>
-            </list-index>
-            <one-to-many class="encapsulacion.experienciaLaboral"/>
-        </list>
-     -->
-     
-     
-     
-     
+        
+        
      </class>     
 </hibernate-mapping>

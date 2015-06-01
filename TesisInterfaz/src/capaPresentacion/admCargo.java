@@ -6,7 +6,10 @@
 
 package capaPresentacion;
 
+import encapsulacion.cargo;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import logicaNegocio.logicaCargo;
 
 /**
  *
@@ -17,7 +20,7 @@ public class admCargo extends javax.swing.JPanel {
       
     crearCargo cc;
     DefaultTableModel tablaCargo;
-    infoDepartamento inf;
+    infoCargo inf;
     /**
      * Creates new form admCargo
      */
@@ -212,18 +215,18 @@ public class admCargo extends javax.swing.JPanel {
         // TODO add your handling code here:
 
       tablaCargo=(DefaultTableModel)jtableCargos.getModel();
-      inf=new infoDepartamento();
+      inf=new infoCargo();
       String dato;
-   /**     int iD;
+       int iD;
         jPanel5.removeAll();
         jPanel5.repaint();
-        dato=String.valueOf(tablaDepart.getValueAt(tablaCargos.getSelectedRow(),0));
+        dato=String.valueOf(tablaCargo.getValueAt(jtableCargos.getSelectedRow(),0));
         iD=Integer.parseInt(dato);
-        i.CargarDepartamento(iD);
-        i.setVisible(true);
-        jPanel2.setLayout(new java.awt.BorderLayout());
-        jPanel2.add(i);
-        jPanel2.revalidate();**/
+        inf.CargarDepartamento(iD);
+        inf.setVisible(true);
+        jPanel5.setLayout(new java.awt.BorderLayout());
+        jPanel5.add(inf);
+        jPanel5.revalidate();
 
     }//GEN-LAST:event_jtableCargosMouseClicked
 
@@ -265,21 +268,27 @@ public class admCargo extends javax.swing.JPanel {
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         // TODO add your handling code here:
-      /**  LimpiarJTable();
-        tablaDepart=(DefaultTableModel)tablaDepartamento.getModel();
-        logicaDepartamento dep=new logicaDepartamento();
+        LimpiarJTable();
+        tablaCargo=(DefaultTableModel)jtableCargos.getModel();
+        logicaCargo c=new logicaCargo();
         Object [] fila =new Object[2];
-        List<departamento> department=null;
-        department=dep.consultar();
-        for(departamento c : department)
+        List<cargo> cargos=null;
+        cargos=c.consultar();
+        for(cargo ca : cargos)
         {
-            fila[0]= c.getId();
-            fila[1]= c.getNombre();
-            tablaDepart.addRow(fila);
+            fila[0]= ca.getId();
+            fila[1]= ca.getNombre();
+            tablaCargo.addRow(fila);
         }
-        **/
     }//GEN-LAST:event_actualizarActionPerformed
 
+     private void LimpiarJTable(){
+        tablaCargo=(DefaultTableModel)jtableCargos.getModel();
+        int a =tablaCargo.getRowCount()-1;
+        for(int i=a;i>=0;i--){ 
+            tablaCargo.removeRow(i);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar;

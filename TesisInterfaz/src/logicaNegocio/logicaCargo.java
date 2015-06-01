@@ -6,6 +6,7 @@ package logicaNegocio;
 
 import capaDatos.puestoTrabajoDAO;
 import encapsulacion.cargo;
+import java.util.List;
 
 /**
  *
@@ -19,6 +20,19 @@ public class logicaCargo {
         datos.guardarCargo(c);
     }
     
+    public List<cargo> consultar(){
+        List<cargo> departamentos=null;
+        departamentos=datos.obtenerCargos();
+        return  departamentos;
+    }
+    
+     public cargo buscar(int ids){
+    
+        cargo depar=null;
+        depar=datos.buscarCargo(ids);
+        return depar;
+    
+    }
     
     
     public void validar(cargo c) throws exceptionClass {
