@@ -21,6 +21,7 @@ public class departamento {
     private String descripcion;
     private String tipoObjetivo;
     private List <objetivos> objDepart=null;
+    private List <empleado> emp=null;
    
     
     public departamento() {
@@ -65,7 +66,12 @@ public class departamento {
     public void setObjDepart(List<objetivos> objDepart) {
      this.objDepart = objDepart;
     }
-    
- 
-    
+
+    public List<empleado> getEmp() {
+        return emp;
+    }
+
+    public void setEmp(List<empleado> emp) {
+        this.emp = emp;
+    }  
 }

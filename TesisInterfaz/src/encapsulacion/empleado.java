@@ -30,8 +30,8 @@ public class empleado {
     private List <experienciaLaboral> exp=null;
     private String Genero;
     private String estCivil;
-    private String cargo;
-    private String departamento;
+    private cargo car;
+    private departamento dep;
     private double salario;
 
     public empleado() {  //contructor por defecto que utiliza Hibernate
@@ -53,23 +53,6 @@ public class empleado {
         this.numCuenta = numCuenta;
     }
     
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
     public double getSalario() {
         return salario;
     }
@@ -175,6 +158,24 @@ public class empleado {
     public void setNit(String nit) {
         this.nit = nit;
     }
+
+    public cargo getCar() {
+        return car;
+    }
+
+    public void setCar(cargo car) {
+        this.car = car;
+    }
+
+    public departamento getDep() {
+        return dep;
+    }
+
+    public void setDep(departamento dep) {
+        this.dep = dep;
+    }
+    
+    
     
     
 }

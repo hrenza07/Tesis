@@ -31,6 +31,13 @@
             <one-to-many class="encapsulacion.estudios"/>
         </list>
         
+     <many-to-one name="dep" class="encapsulacion.departamento">
+        <column name="id_departamento"/>
+     </many-to-one>
+     
+     <many-to-one name="car" class="encapsulacion.departamento">
+        <column name="id_PuestoTrabajo"/>
+     </many-to-one>   
         
      </class>     
 </hibernate-mapping>

@@ -6,6 +6,8 @@
 
 package capaPresentacion;
 
+import encapsulacion.cargo;
+import encapsulacion.departamento;
 import encapsulacion.empleado;
 import encapsulacion.estudios;
 import encapsulacion.experienciaLaboral;
@@ -17,6 +19,10 @@ import javax.swing.table.DefaultTableModel;
 import logicaNegocio.exceptionClass;
 import logicaNegocio.logicaEmpleados;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import logicaNegocio.logicaCargo;
+import logicaNegocio.logicaDepartamento;
 
 /**
  *
@@ -26,6 +32,14 @@ public class crearEmpleado extends javax.swing.JFrame {
     
     private DefaultTableModel mod;
     private DefaultTableModel modEx; 
+    DefaultComboBoxModel modeloComboDep;
+    DefaultComboBoxModel modeloComboCargo;
+    logicaEmpleados logicaEmp=new logicaEmpleados();
+    logicaDepartamento logicaDep=new logicaDepartamento();
+    logicaCargo logCar=new logicaCargo();
+    List s1=new ArrayList();
+    List<departamento> dep;
+    List<cargo> carg;
 
 
     /**
@@ -35,6 +49,7 @@ public class crearEmpleado extends javax.swing.JFrame {
         super("Agregar Nuevo Empleado");
         initComponents();
         agregarEstudios.setEnabled(false);
+        cargar();
     }
    
     
@@ -514,10 +529,6 @@ public class crearEmpleado extends javax.swing.JFrame {
 
         jLabel30.setText("Departamento:");
 
-        comboDepart.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        comboCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel31.setText("Tipo de Contrato:");
 
         jLabel32.setText("Salario:($)");
@@ -621,7 +632,7 @@ public class crearEmpleado extends javax.swing.JFrame {
         empleado emp=new empleado();
         estudios es=new estudios();
         experienciaLaboral exp=new experienciaLaboral();
-        logicaEmpleados logicaEmp=new logicaEmpleados();
+      //  logicaEmpleados logicaEmp=new logicaEmpleados();
         mod=(DefaultTableModel) tablaEstudios.getModel();
         modEx=(DefaultTableModel) tablaExperiencia.getModel();
         List<estudios> empleadoEstudio=new ArrayList<>();
@@ -639,8 +650,8 @@ public class crearEmpleado extends javax.swing.JFrame {
         emp.setDireccion(domicilio.getText());
         emp.setNit(nitEmpleado.getText());
         emp.setSalario(Double.parseDouble(salarioEmpleado.getText()));
-        emp.setCargo(comboCargo.getSelectedItem().toString());
-        emp.setDepartamento(comboDepart.getSelectedItem().toString());
+       // emp.setCargo(comboCargo.getSelectedItem().toString());
+       // emp.setDepartamento(comboDepart.getSelectedItem().toString());
         emp.setNumCuenta(numCuenta.getText());
         emp.setEstCivil(estcivilcombo.getSelectedItem().toString());
         emp.setGenero(generocombo.getSelectedItem().toString());
@@ -729,6 +740,31 @@ public class crearEmpleado extends javax.swing.JFrame {
         
     }//GEN-LAST:event_agregarExperienciaActionPerformed
 
+    private void cargar(){
+        
+       modeloComboDep = new DefaultComboBoxModel();
+       modeloComboCargo = new DefaultComboBoxModel();
+       dep =null;
+       carg=null;
+       s1.add(null);
+       dep=logicaDep.consultar();
+       carg=logCar.consultar();
+       
+       dep.removeAll(s1);
+       carg.removeAll(s1);
+       
+       for(departamento d: dep) {     
+           modeloComboDep.addElement(d.getNombre());      
+       }
+       
+       for(cargo c: carg) {     
+           modeloComboCargo.addElement(c.getNombre());      
+       }
+      
+       comboDepart.setModel(modeloComboDep);
+       comboCargo.setModel(modeloComboCargo);
+       
+    }
    
     
     
@@ -841,4 +877,5 @@ public class crearEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField tiempoExperiencia;
     private javax.swing.JTextField tituObtenido;
     // End of variables declaration//GEN-END:variables
+
 }

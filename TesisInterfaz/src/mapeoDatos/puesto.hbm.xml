@@ -23,6 +23,16 @@
             </list-index>
             <one-to-many class="encapsulacion.funcionesCargo"/>
         </list>
+        
+       <list name="emple" table="empleado" lazy="false" cascade="all">
+            <key>
+                <column name="id_PuestoTrabajo"/>
+            </key>
+            <list-index>
+             <column name="idx"/>
+            </list-index>
+            <one-to-many class="encapsulacion.objetivos"/>
+        </list>  
                  
      </class>     
 </hibernate-mapping>

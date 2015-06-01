@@ -21,5 +21,16 @@
             </list-index>
             <one-to-many class="encapsulacion.objetivos"/>
         </list> 
+        
+      <list name="emp" table="empleado" lazy="false" cascade="all">
+            <key>
+                <column name="id_departamento"/>
+            </key>
+            <list-index>
+             <column name="idx"/>
+            </list-index>
+            <one-to-many class="encapsulacion.objetivos"/>
+        </list>   
+        
      </class>     
 </hibernate-mapping>
