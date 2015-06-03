@@ -631,8 +631,11 @@ public class crearEmpleado extends javax.swing.JFrame {
       
         empleado emp=new empleado();
         estudios es=new estudios();
+        departamento depempleado=new departamento();
+        cargo cargoempleado=new cargo();
         experienciaLaboral exp=new experienciaLaboral();
-      //  logicaEmpleados logicaEmp=new logicaEmpleados();
+        modeloComboDep = new DefaultComboBoxModel();
+        int id;
         mod=(DefaultTableModel) tablaEstudios.getModel();
         modEx=(DefaultTableModel) tablaExperiencia.getModel();
         List<estudios> empleadoEstudio=new ArrayList<>();
@@ -650,8 +653,20 @@ public class crearEmpleado extends javax.swing.JFrame {
         emp.setDireccion(domicilio.getText());
         emp.setNit(nitEmpleado.getText());
         emp.setSalario(Double.parseDouble(salarioEmpleado.getText()));
-       // emp.setCargo(comboCargo.getSelectedItem().toString());
+        departamento depId=(departamento)comboDepart.getSelectedItem();
+        depempleado=logicaDep.buscar(depId.getId());
+            System.out.println(depId.getId()+"departamento id");
+        emp.setDep(depempleado);
+        id=0;
+        cargo cargoId=(cargo)comboCargo.getSelectedItem();
+        cargoempleado=logCar.buscar(cargoId.getId());
+            System.out.println(cargoId.getId()+"cargo id");
+        emp.setCar(cargoempleado);
+        emp.setId(0);
+        
+        //emp.setCargo(comboCargo.getSelectedItem().toString());
        // emp.setDepartamento(comboDepart.getSelectedItem().toString());
+       
         emp.setNumCuenta(numCuenta.getText());
         emp.setEstCivil(estcivilcombo.getSelectedItem().toString());
         emp.setGenero(generocombo.getSelectedItem().toString());
@@ -679,8 +694,8 @@ public class crearEmpleado extends javax.swing.JFrame {
         
         emp.setExp(experiencia);
         
-        logicaEmp.validar(emp);
-        logicaEmp.agregarEmpleado(emp);        
+       logicaEmp.validar(emp);
+       logicaEmp.agregarEmpleado(emp);        
        
             }catch(NumberFormatException a){
                 
@@ -754,13 +769,13 @@ public class crearEmpleado extends javax.swing.JFrame {
        carg.removeAll(s1);
        
        for(departamento d: dep) {     
-           modeloComboDep.addElement(d.getNombre());      
+           modeloComboDep.addElement(new departamento(d.getId(),d.getNombre()));      
        }
        
        for(cargo c: carg) {     
-           modeloComboCargo.addElement(c.getNombre());      
+          modeloComboCargo.addElement(new cargo(c.getId(),c.getNombre()));     
        }
-      
+        
        comboDepart.setModel(modeloComboDep);
        comboCargo.setModel(modeloComboCargo);
        

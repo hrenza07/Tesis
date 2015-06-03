@@ -26,12 +26,12 @@
         
        <list name="emple" table="empleado" lazy="false" cascade="all">
             <key>
-                <column name="id_PuestoTrabajo"/>
+                <column name="id_puestotrabajo"/>
             </key>
             <list-index>
              <column name="idx"/>
             </list-index>
-            <one-to-many class="encapsulacion.objetivos"/>
+            <one-to-many class="encapsulacion.empleado"/>
         </list>  
                  
      </class>     

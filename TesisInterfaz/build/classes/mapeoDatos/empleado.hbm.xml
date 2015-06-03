@@ -20,10 +20,12 @@
      <property name="salario" column="salario" type="double"/>
      <property name="Genero" column="sexo" type="string"/>
      <property name="estCivil" column="estado_civil" type="string"/>
+     <property name="idx" column="idx" type="int"/>
+     
      
       <list name="estudios" table="educacion" fetch="select" cascade="all">
             <key>
-                <column name="idEmpleado" not-null="true"/>
+                <column name="id_empleado_estudios"/>
             </key>
             <list-index>
              <column name="idx"/>
@@ -35,8 +37,8 @@
         <column name="id_departamento"/>
      </many-to-one>
      
-     <many-to-one name="car" class="encapsulacion.departamento">
-        <column name="id_PuestoTrabajo"/>
+     <many-to-one name="car" class="encapsulacion.cargo">
+        <column name="id_puestotrabajo"/>
      </many-to-one>   
         
      </class>     

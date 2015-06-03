@@ -33,6 +33,7 @@ public class empleado {
     private cargo car;
     private departamento dep;
     private double salario;
+    private int idx;//modificado
 
     public empleado() {  //contructor por defecto que utiliza Hibernate
     }                        
@@ -174,8 +175,13 @@ public class empleado {
     public void setDep(departamento dep) {
         this.dep = dep;
     }
-    
-    
-    
-    
+
+    public int getIdx() {
+        return idx;
+    }
+
+    public void setIdx(int idx) {
+        this.idx = idx;
+    }
+      
 }

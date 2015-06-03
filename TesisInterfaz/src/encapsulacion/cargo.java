@@ -22,7 +22,13 @@ public class cargo {
     
     public cargo() {
     }
+//esta de mas
+    public cargo(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 
+    
     public int getId() {
         return id;
     }
@@ -78,6 +84,12 @@ public class cargo {
     public void setEmple(List<empleado> emple) {
         this.emple = emple;
     }
+//esta de mas
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
     
     
 

@@ -26,6 +26,11 @@ public class departamento {
     
     public departamento() {
     }
+//este codigo esta de mas
+    public departamento(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 
     public int getId() {
         return id;
@@ -74,4 +79,11 @@ public class departamento {
     public void setEmp(List<empleado> emp) {
         this.emp = emp;
     }  
+//este codigo esta de mas
+    @Override
+    public String toString() {
+        return  nombre;
+    }
+    
+    
 }

@@ -21,15 +21,15 @@
             </list-index>
             <one-to-many class="encapsulacion.objetivos"/>
         </list> 
-        
+        <!--modifique esto -->
       <list name="emp" table="empleado" lazy="false" cascade="all">
             <key>
-                <column name="id_departamento"/>
+                <column name="id_departamento" not-null="true"/>
             </key>
             <list-index>
              <column name="idx"/>
             </list-index>
-            <one-to-many class="encapsulacion.objetivos"/>
+            <one-to-many class="encapsulacion.empleado"/>
         </list>   
         
      </class>     

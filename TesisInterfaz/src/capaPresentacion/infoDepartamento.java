@@ -5,6 +5,7 @@
 package capaPresentacion;
 
 import encapsulacion.departamento;
+import encapsulacion.empleado;
 import encapsulacion.objetivos;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class infoDepartamento extends javax.swing.JPanel {
       int iD=depart.getId();
       modOb=(DefaultTableModel)tablaInfo.getModel();
       List<objetivos> objetivosDepartamento=null;
+      List<empleado> empleados=null; 
       List s1=new ArrayList();
       s1.add(null);
       
@@ -44,6 +46,14 @@ public class infoDepartamento extends javax.swing.JPanel {
        for(objetivos obj: objetivosDepartamento) {     
           modOb.addRow(new Object[]{obj.getTipo(),obj.getObjDescripcion()});
         }    
+       
+       
+     //  empleados=depart.getEmp();
+      //  System.out.println(empleados.size());
+       //  empleados.removeAll(s1);
+     //  for(empleado em: empleados) {     
+      //     System.out.println(em.getId()+" "+em.getNombre());
+      //  }
     }
        
     /**
