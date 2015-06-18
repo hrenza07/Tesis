@@ -628,7 +628,7 @@ public class crearEmpleado extends javax.swing.JFrame {
     
     private void guardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarEmpleadoActionPerformed
         // TODO add your handling code here:
-      
+     
         empleado emp=new empleado();
         estudios es=new estudios();
         departamento depempleado=new departamento();
@@ -662,7 +662,7 @@ public class crearEmpleado extends javax.swing.JFrame {
         cargoempleado=logCar.buscar(cargoId.getId());
             System.out.println(cargoId.getId()+"cargo id");
         emp.setCar(cargoempleado);
-        emp.setId(0);
+       // emp.setIdx(1);
         
         //emp.setCargo(comboCargo.getSelectedItem().toString());
        // emp.setDepartamento(comboDepart.getSelectedItem().toString());

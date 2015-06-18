@@ -22,7 +22,7 @@ public class empleadoDAO {
     
       sesion = hibernateUtil.getSessionFactory().openSession();
       tx = sesion.beginTransaction();
-        
+       
         }
     
   private void manejaExcepcion(HibernateException he) throws HibernateException{

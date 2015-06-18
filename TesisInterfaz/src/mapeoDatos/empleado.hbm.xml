@@ -33,11 +33,11 @@
             <one-to-many class="encapsulacion.estudios"/>
         </list>
         
-     <many-to-one name="dep" class="encapsulacion.departamento">
+     <many-to-one name="dep" lazy="false" class="encapsulacion.departamento">
         <column name="id_departamento"/>
      </many-to-one>
      
-     <many-to-one name="car" class="encapsulacion.cargo">
+     <many-to-one name="car" lazy="false" class="encapsulacion.cargo">
         <column name="id_puestotrabajo"/>
      </many-to-one>   
         
