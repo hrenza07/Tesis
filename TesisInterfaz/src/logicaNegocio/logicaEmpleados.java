@@ -8,6 +8,7 @@ package logicaNegocio;
 
 import capaDatos.empleadoDAO;
 import encapsulacion.empleado;
+import java.util.List;
 
 /**
  *
@@ -21,6 +22,12 @@ public class logicaEmpleados {
        datos.guardaEmpleado(emp);
       
     }   
+    
+    public List<empleado> consultar(){
+        List<empleado> empleados=null;
+        empleados=datos.obtenerEmpleados();
+        return  empleados;
+    }
            
    
     

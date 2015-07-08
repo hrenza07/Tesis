@@ -6,6 +6,11 @@
 
 package capaPresentacion;
 
+import encapsulacion.empleado;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import logicaNegocio.logicaEmpleados;
+
 /**
  *
  * @author byron
@@ -19,7 +24,8 @@ public class AdmEmpleados extends javax.swing.JPanel {
         initComponents();
     }
     infoEmpleado a;
-
+    DefaultTableModel tablaEmp;
+    logicaEmpleados em;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,11 +37,12 @@ public class AdmEmpleados extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaEmpleado = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -45,8 +52,8 @@ public class AdmEmpleados extends javax.swing.JPanel {
 
         jLabel2.setText("jLabel2");
 
-        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaEmpleado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tablaEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -54,12 +61,12 @@ public class AdmEmpleados extends javax.swing.JPanel {
                 "Id", "Apellido", "Nombre", "Cargo", "Departamento"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tablaEmpleadoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaEmpleado);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administracion de Personal", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bitstream Vera Sans", 0, 12))); // NOI18N
 
@@ -74,6 +81,13 @@ public class AdmEmpleados extends javax.swing.JPanel {
 
         jButton3.setText("Eliminar");
 
+        jButton5.setText("actualizar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -83,9 +97,11 @@ public class AdmEmpleados extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addGap(46, 46, 46)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(jButton3)
-                .addGap(90, 90, 90))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(37, 37, 37))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +110,8 @@ public class AdmEmpleados extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton5))
                 .addContainerGap())
         );
 
@@ -187,7 +204,7 @@ public class AdmEmpleados extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void tablaEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEmpleadoMouseClicked
         // TODO add your handling code here:
         
         a=new infoEmpleado();
@@ -197,7 +214,28 @@ public class AdmEmpleados extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.BorderLayout());
         jPanel2.add(a);
         jPanel2.revalidate();
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_tablaEmpleadoMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        //LimpiarJTable();
+        tablaEmp=(DefaultTableModel)tablaEmpleado.getModel();
+        em=new logicaEmpleados();       
+        Object [] fila =new Object[5];
+        List<empleado> empleados=null;
+        empleados=em.consultar();
+        for(empleado e : empleados) 
+        { 
+            fila[0]= e.getId();
+            fila[1]= e.getApellido();
+            fila[2]= e.getNombre();
+            fila[3]= e.getCar().getNombre();
+            fila[4]= e.getDep().getNombre();
+          
+           tablaEmp.addRow(fila);
+        } 
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,6 +243,7 @@ public class AdmEmpleados extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -212,7 +251,7 @@ public class AdmEmpleados extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tablaEmpleado;
     // End of variables declaration//GEN-END:variables
 }

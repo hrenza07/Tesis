@@ -4,6 +4,8 @@
  */
 package capaDatos;
 
+import encapsulacion.empleado;
+import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,6 +19,7 @@ public class empleadoDAO {
 
     private Session sesion;
     private Transaction tx;
+    idxManager index =new idxManager();
     
   private void iniciaOperacion() throws HibernateException{
     
@@ -33,13 +36,13 @@ public class empleadoDAO {
         
         }
     
-  public void guardaEmpleado(Object s)
+  public void guardaEmpleado(empleado emp)
 { 
     try 
     { 
         iniciaOperacion(); 
-        System.out.println("sesion Iniciada");
-        sesion.save(s); 
+        emp.setIdx(index.idxNext());
+        sesion.save(emp); 
         tx.commit();
         sesion.close();
         System.out.println("sesion Cerrada");
@@ -50,5 +53,20 @@ public class empleadoDAO {
 }
   
 }
-    
+   public List<empleado> obtenerEmpleados(){
+  
+        List<empleado> empleados=null;
+        
+        try{
+             iniciaOperacion();
+             empleados=sesion.createQuery("from empleado").list();
+        
+        }finally{  
+            sesion.close();   
+        }  
+        return empleados;
+  }
+  
+  
+  
 }
