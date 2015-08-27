@@ -4,12 +4,15 @@
  */
 package capaPresentacion;
 
+import encapsulacion.cargo;
 import encapsulacion.departamento;
+import encapsulacion.empleado;
 import encapsulacion.objetivos;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import logicaNegocio.logicaDepartamento;
+import org.hibernate.Hibernate;
 
 /**
  *
@@ -19,6 +22,7 @@ public class infoDepartamento extends javax.swing.JPanel {
 
      private departamento depart;
      private DefaultTableModel modOb;
+     private DefaultTableModel modEmp;
     /**
      * Creates new form infoDepartamento
      */
@@ -32,7 +36,9 @@ public class infoDepartamento extends javax.swing.JPanel {
       depart=dep.buscar(id);
       int iD=depart.getId();
       modOb=(DefaultTableModel)tablaInfo.getModel();
+      modEmp=(DefaultTableModel)tablaEmp.getModel();
       List<objetivos> objetivosDepartamento=null;
+      List<empleado> empleados=null; 
       List s1=new ArrayList();
       s1.add(null);
       
@@ -43,6 +49,12 @@ public class infoDepartamento extends javax.swing.JPanel {
       objetivosDepartamento.removeAll(s1);
        for(objetivos obj: objetivosDepartamento) {     
           modOb.addRow(new Object[]{obj.getTipo(),obj.getObjDescripcion()});
+        }    
+       empleados=depart.getEmp();
+       empleados.removeAll(s1);
+        for(empleado e: empleados) {  
+           modEmp.addRow(new Object[]{e.getId(),e.getApellido()+" , "+e.getNombre(), e.getCar().getNombre()});
+           
         }    
     }
        
@@ -55,6 +67,8 @@ public class infoDepartamento extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,6 +81,21 @@ public class infoDepartamento extends javax.swing.JPanel {
         tablaInfo = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         infoDescripcion = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaEmp = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
 
         jLabel1.setText("ID:");
 
@@ -103,6 +132,27 @@ public class infoDepartamento extends javax.swing.JPanel {
         infoDescripcion.setRows(5);
         jScrollPane2.setViewportView(infoDescripcion);
 
+        tablaEmp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Empleado", "Cargo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablaEmp);
+        tablaEmp.getColumnModel().getColumn(0).setResizable(false);
+        tablaEmp.getColumnModel().getColumn(0).setPreferredWidth(4);
+        tablaEmp.getColumnModel().getColumn(2).setResizable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,12 +173,13 @@ public class infoDepartamento extends javax.swing.JPanel {
                                 .addComponent(jLabel1)
                                 .addGap(59, 59, 59)
                                 .addComponent(idInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(jLabel6)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,17 +194,19 @@ public class infoDepartamento extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(infoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -168,6 +221,10 @@ public class infoDepartamento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaEmp;
     private javax.swing.JTable tablaInfo;
     // End of variables declaration//GEN-END:variables
 }

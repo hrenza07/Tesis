@@ -21,9 +21,15 @@ public class departamento {
     private String descripcion;
     private String tipoObjetivo;
     private List <objetivos> objDepart=null;
+    private List <empleado> emp=null;
    
     
     public departamento() {
+    }
+//este codigo esta de mas
+    public departamento(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -65,7 +71,19 @@ public class departamento {
     public void setObjDepart(List<objetivos> objDepart) {
      this.objDepart = objDepart;
     }
+
+    public List<empleado> getEmp() {
+        return emp;
+    }
+
+    public void setEmp(List<empleado> emp) {
+        this.emp = emp;
+    }  
+//este codigo esta de mas
+    @Override
+    public String toString() {
+        return  nombre;
+    }
     
- 
     
 }

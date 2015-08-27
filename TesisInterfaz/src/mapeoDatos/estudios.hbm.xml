@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
      <class name="encapsulacion.estudios" schema="pribantsa" table="educacion">
-          <id name="idestudios" column="idEducacion">
+          <id name="idestudios" column="id_educacion">
             <generator class="sequence">
              <param name="sequence">pribantsa.educacion_educacion_seqid</param> 
             </generator>
@@ -16,7 +16,7 @@
      <property name="nivel" column="nivel" type="string"/>
      
      <many-to-one name="emp" class="encapsulacion.empleado">
-        <column name="idEmpleado"/>
+        <column name="id_empleado_estudios"/>
      </many-to-one>
      
      </class>     

@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 public class logicaDepartamento {
     
     departamentoDAO datos=new departamentoDAO();
-    List<objetivos> objetivosdep=null;
    
     public void agregarDepartamento(departamento dep) {
         datos.guardarDepartamento(dep);

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+     <class name="encapsulacion.funcionesCargo" schema="pribantsa" table="objetivo">
+          <id name="id" column="id_objetivo">
+            <generator class="sequence">
+             <param name="sequence">pribantsa.objetivo_id_objetivo_seq</param> 
+            </generator>
+         </id>
+     <property name="tarea" column="funcion" type="string"/>
+     
+     <many-to-one name="c" class="encapsulacion.cargo">
+        <column name="idpuesto_trabajo"/>
+     </many-to-one>
+     
+     </class>     
+</hibernate-mapping>
