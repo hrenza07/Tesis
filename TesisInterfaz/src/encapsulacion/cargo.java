@@ -4,7 +4,9 @@
  */
 package encapsulacion;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -17,12 +19,12 @@ public class cargo {
     private String Descripcion;
     private double salMin;
     private double salMax;
-    private List<funcionesCargo> funciones=null;
-    private List<empleado> emple=null;
+    private Set <funcionesCargo> funciones=new HashSet<funcionesCargo>(0);
+    private Set <empleado> emple=new HashSet<empleado>(0);
     
     public cargo() {
     }
-//esta de mas
+
     public cargo(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
@@ -69,22 +71,22 @@ public class cargo {
         this.salMax = salMax;
     } 
 
-    public List<funcionesCargo> getFunciones() {
+    public Set<funcionesCargo> getFunciones() {
         return funciones;
     }
 
-    public void setFunciones(List<funcionesCargo> funciones) {
+    public void setFunciones(Set<funcionesCargo> funciones) {
         this.funciones = funciones;
     }
 
-    public List<empleado> getEmple() {
+    public Set<empleado> getEmple() {
         return emple;
     }
 
-    public void setEmple(List<empleado> emple) {
+    public void setEmple(Set<empleado> emple) {
         this.emple = emple;
     }
-//esta de mas
+   
     @Override
     public String toString() {
         return nombre;

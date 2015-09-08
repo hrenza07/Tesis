@@ -7,6 +7,7 @@ package capaDatos;
 import encapsulacion.empleado;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -41,7 +42,6 @@ public class empleadoDAO {
     try 
     { 
         iniciaOperacion(); 
-        emp.setIdx(index.idxNext());
         sesion.save(emp); 
         tx.commit();
         sesion.close();
@@ -67,6 +67,21 @@ public class empleadoDAO {
         return empleados;
   }
   
-  
+   public List<empleado> obtenerEmpleados(int id){
+        
+        List<empleado> empleados=null;
+        //String hql= "FROM empleado E WHERE E.departamento.id =:ide";
+        
+        try{
+             iniciaOperacion();
+             Query query=sesion.createQuery("FROM departamento D join D.empleado WHERE D.id= 45");
+            // query.setParameter("ide", id);
+             empleados=query.list();        
+        
+        }finally{  
+            sesion.close();   
+        }  
+       return empleados;
+   }
   
 }

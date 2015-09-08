@@ -252,7 +252,7 @@ public class crearDepart extends javax.swing.JFrame {
         departamento dep=new departamento();
         
         logicaDepartamento logDep= new logicaDepartamento();
-        List<objetivos> objDep=new ArrayList<>();
+        Set <objetivos> objDep=new HashSet<objetivos>(0);
         modOb=(DefaultTableModel)tablaObje.getModel();
    
         try{
@@ -268,7 +268,7 @@ public class crearDepart extends javax.swing.JFrame {
                 System.out.println(obj.getObjDescripcion());
                 objDep.add(obj);
             }
-            dep.setObjDepart(objDep);
+            dep.setObj(objDep);
             logDep.validar(dep);
             logDep.agregarDepartamento(dep);
 

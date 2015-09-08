@@ -9,7 +9,9 @@ package capaPresentacion;
 import encapsulacion.cargo;
 import encapsulacion.funcionesCargo;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logicaNegocio.exceptionClass;
@@ -250,7 +252,7 @@ public class crearCargo extends javax.swing.JFrame {
         // TODO add your handling code here:
         cargo puesto=new cargo();
         logicaCargo logDep= new logicaCargo();
-        List<funcionesCargo> funcionCargo=new ArrayList<>();
+        Set <funcionesCargo> funcionCargo=new HashSet<funcionesCargo>();
         modOb=(DefaultTableModel)tablaFunciones.getModel();
   
         try{

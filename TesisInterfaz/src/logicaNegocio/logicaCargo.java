@@ -6,7 +6,9 @@ package logicaNegocio;
 
 import capaDatos.puestoTrabajoDAO;
 import encapsulacion.cargo;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -20,10 +22,9 @@ public class logicaCargo {
         datos.guardarCargo(c);
     }
     
-    public List<cargo> consultar(){
-        List<cargo> departamentos=null;
-        departamentos=datos.obtenerCargos();
-        return  departamentos;
+    public Set<cargo> consultar(){
+        Set <cargo> c=new HashSet<cargo>(datos.obtenerCargos());
+        return c;   
     }
     
      public cargo buscar(int ids){

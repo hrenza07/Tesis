@@ -6,6 +6,7 @@
 
 package capaPresentacion;
 
+import capaDatos.empleadoDAO;
 import encapsulacion.empleado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -220,6 +221,7 @@ public class AdmEmpleados extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         //LimpiarJTable();
+        empleadoDAO dao=new empleadoDAO();
         tablaEmp=(DefaultTableModel)tablaEmpleado.getModel();
         em=new logicaEmpleados();       
         Object [] fila =new Object[5];
@@ -235,6 +237,10 @@ public class AdmEmpleados extends javax.swing.JPanel {
           
            tablaEmp.addRow(fila);
         } 
+      
+        empleados=dao.obtenerEmpleados(45);
+        System.out.println(empleados.size());
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
 

@@ -19,19 +19,14 @@
      <property name="edad" column="edad" type="int"/>         
      <property name="salario" column="salario" type="double"/>
      <property name="Genero" column="sexo" type="string"/>
-     <property name="estCivil" column="estado_civil" type="string"/>
-     <property name="idx" column="idx" type="int"/>
+     <property name="estCivil" column="estado_civil" type="string"/>    
      
-     
-      <list name="estudios" table="educacion" fetch="select" cascade="all">
+      <set name="estudios" table="educacion" fetch="select" cascade="all">
             <key>
                 <column name="id_empleado_estudios"/>
             </key>
-            <list-index>
-             <column name="idx"/>
-            </list-index>
             <one-to-many class="encapsulacion.estudios"/>
-        </list>
+        </set>
         
      <many-to-one name="dep" lazy="false" class="encapsulacion.departamento">
         <column name="id_departamento"/>

@@ -275,7 +275,7 @@ public class ModificarDepartament extends javax.swing.JFrame {
         descripcion.setText(dep.getDescripcion());
         idDep.setText(String.valueOf(dep.getId()));
  
-        objetivosDepartamento=dep.getObjDepart();
+       // objetivosDepartamento=dep.getObjDepart();
         objetivosDepartamento.removeAll(s1);
         
          for(objetivos obj: objetivosDepartamento) {
@@ -304,7 +304,7 @@ public class ModificarDepartament extends javax.swing.JFrame {
        s1.add(null);
       
        try{
-            objDep=depart.getObjDepart(); 
+      //      objDep=depart.getObjDepart(); 
             objetivos obj=new objetivos();
             objDep.removeAll(s1);
             depart.setNombre(nomDep.getText());
@@ -313,7 +313,7 @@ public class ModificarDepartament extends javax.swing.JFrame {
             obj.setObjDescripcion(modOb.getValueAt(tablaObje.getRowCount()-1,1).toString());
             objDep.add(obj);
             
-            depart.setObjDepart(objDep);
+      //      depart.setObjDepart(objDep);
             logDep.validar(depart);
             logDep.actualizar(depart);
 
@@ -339,7 +339,7 @@ public class ModificarDepartament extends javax.swing.JFrame {
         
         try{
             
-            objDep=dep.getObjDepart();
+      //      objDep=dep.getObjDepart();
             dep.setNombre(nomDep.getText());
             dep.setDescripcion(descripcion.getText());
             objDep.removeAll(s1);
@@ -351,7 +351,7 @@ public class ModificarDepartament extends javax.swing.JFrame {
                 objDep.add(obj);
                 objDep.removeAll(s1);
            }
-           dep.setObjDepart(objDep);
+     //      dep.setObjDepart(objDep);
            logDep.validar(dep);     
             
      int i=JOptionPane.showConfirmDialog(null, "Registro Actualizado Correctamente","Actualizado", JOptionPane.OK_CANCEL_OPTION);
@@ -371,7 +371,7 @@ public class ModificarDepartament extends javax.swing.JFrame {
         logicaDepartamento logDep= new logicaDepartamento();
         dep=logDep.buscar(Integer.parseInt(idDep.getText()));
         List<objetivos> objDep=new ArrayList<>();
-        objDep=dep.getObjDepart();
+     //   objDep=dep.getObjDepart();
         objDep.removeAll(s1);
         int i=tablaObje.getSelectedRow();
         modOb.removeRow(i);

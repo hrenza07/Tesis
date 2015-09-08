@@ -40,7 +40,7 @@ public class infoCargo extends javax.swing.JPanel {
       idInfo.setText(String.valueOf(iD));
       infoNombre.setText(ca.getNombre());
       infoDescripcion.setText(ca.getDescripcion());
-       tareasCargo=ca.getFunciones();
+    //   tareasCargo=ca.getFunciones();
       tareasCargo.removeAll(s1);
        for(funcionesCargo f: tareasCargo) {     
           modOb.addRow(new Object[]{f.getTarea()});

@@ -14,25 +14,19 @@
      <property name="salMin" column="salario_min" type="double"/>
      <property name="salMax" column="salario_max" type="double"/>
      
-     <list name="funciones" table="objetivo" lazy="false" cascade="all-delete-orphan">
+     <set name="funciones" table="objetivo" lazy="false" cascade="all-delete-orphan">
             <key>
                 <column name="idpuesto_trabajo"/>
             </key>
-            <list-index>
-             <column name="idx"/>
-            </list-index>
             <one-to-many class="encapsulacion.funcionesCargo"/>
-        </list>
+        </set>
         
-       <list name="emple" table="empleado" lazy="false" cascade="all">
+      <set name="emple" table="empleado" lazy="false" cascade="all" inverse="false">
             <key>
                 <column name="id_puestotrabajo"/>
             </key>
-            <list-index>
-             <column name="idx"/>
-            </list-index>
             <one-to-many class="encapsulacion.empleado"/>
-        </list>  
+        </set>  
                  
      </class>     
 </hibernate-mapping>

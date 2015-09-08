@@ -8,7 +8,9 @@ package encapsulacion;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -26,7 +28,7 @@ public class empleado {
     private String numCuenta;
     private int edad;
     private String direccion;
-    private List <estudios> estudios=null;
+    private Set <estudios> estudios= new HashSet<estudios>(0);
     private List <experienciaLaboral> exp=null;
     private String Genero;
     private String estCivil;
@@ -70,14 +72,15 @@ public class empleado {
     public void setExp(List<experienciaLaboral> exp) {
         this.exp = exp;
     }
-    
-    public List<estudios> getEstudios() {
+
+    public Set<estudios> getEstudios() {
         return estudios;
     }
 
-    public void setEstudios(List<estudios> estudios) {
+    public void setEstudios(Set<estudios> estudios) {
         this.estudios = estudios;
     }
+    
 
     public String getGenero() {
         return Genero;
@@ -174,14 +177,6 @@ public class empleado {
 
     public void setDep(departamento dep) {
         this.dep = dep;
-    }
-
-    public int getIdx() {
-        return idx;
-    }
-
-    public void setIdx(int idx) {
-        this.idx = idx;
     }
       
 }

@@ -8,6 +8,7 @@ package capaPresentacion;
 
 import encapsulacion.cargo;
 import java.util.List;
+import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 import logicaNegocio.logicaCargo;
 
@@ -272,7 +273,7 @@ public class admCargo extends javax.swing.JPanel {
         tablaCargo=(DefaultTableModel)jtableCargos.getModel();
         logicaCargo c=new logicaCargo();
         Object [] fila =new Object[2];
-        List<cargo> cargos=null;
+        Set<cargo> cargos=null;
         cargos=c.consultar();
         for(cargo ca : cargos)
         {

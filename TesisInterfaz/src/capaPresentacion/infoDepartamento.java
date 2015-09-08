@@ -45,12 +45,12 @@ public class infoDepartamento extends javax.swing.JPanel {
       idInfo.setText(String.valueOf(iD));
       infoNombre.setText(depart.getNombre());
       infoDescripcion.setText(depart.getDescripcion());
-       objetivosDepartamento=depart.getObjDepart();
+     //  objetivosDepartamento=depart.getObjDepart();
       objetivosDepartamento.removeAll(s1);
        for(objetivos obj: objetivosDepartamento) {     
           modOb.addRow(new Object[]{obj.getTipo(),obj.getObjDescripcion()});
         }    
-       empleados=depart.getEmp();
+     //  empleados=depart.getEmp();
        empleados.removeAll(s1);
         for(empleado e: empleados) {  
            modEmp.addRow(new Object[]{e.getId(),e.getApellido()+" , "+e.getNombre(), e.getCar().getNombre()});

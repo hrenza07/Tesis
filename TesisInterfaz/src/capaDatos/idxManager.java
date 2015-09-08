@@ -20,7 +20,7 @@ public class idxManager {
     
         empleadoDAO em=new empleadoDAO();
         List<empleado> empleados=em.obtenerEmpleados();
-         List s1=new ArrayList();
+        List s1=new ArrayList();
          s1.add(null);
         empleados.removeAll(s1);
         if(empleados.size()==0){
